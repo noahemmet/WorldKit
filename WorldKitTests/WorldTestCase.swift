@@ -53,6 +53,7 @@ class WorldTestCase: XCTestCase {
 	func testPositionConversion() {
 		let position = CGPoint(x: 2.9, y: 2.2)
 		let point = world.gridPointForPosition(position)
-		XCTAssertEqual(point, GridPoint(row: 2, column: 2))
+		let secondPoint: MatrixIndex = MatrixIndex(2, 2)
+		XCTAssert(point == secondPoint)
 	}
 }

@@ -54,7 +54,7 @@ public class WorldScene: SKScene {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func cellSpriteForGridPoint(point: GridPoint) -> CellSprite {
+	func cellSpriteForGridPoint(point: MatrixIndex) -> CellSprite {
 		return cellSprites[point.column][point.row]
 	}
 	
@@ -64,7 +64,7 @@ public class WorldScene: SKScene {
 		return CGPoint(x: x, y: y)
 	}
 	
-	func positionForGridPoint(point: GridPoint) -> CGPoint {
+	func positionForGridPoint(point: MatrixIndex) -> CGPoint {
 		let x = CGFloat(point.column) * cellSize.width + (cellSize.width / 2)
 		let y = CGFloat(point.row) * cellSize.height + (cellSize.height / 2)
 		return CGPoint(x: x, y: y)

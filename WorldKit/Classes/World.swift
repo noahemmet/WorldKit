@@ -32,10 +32,10 @@ public struct World {
 		}
 	}
 	
-	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: GridPoint) -> C) {
+	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {
 		self.agents = []
 		self.cells = Matrix(rows: rows, columns: columns) { (row, column) in
-			let cell = cellForPoint(gridPoint: GridPoint(row: row, column: column))
+			let cell = cellForPoint(gridPoint: (row, column))
 			cell.position = CGPoint(x: row, y: column)
 			return cell
 		}
@@ -48,10 +48,10 @@ public struct World {
 	
 	// MARK: - Positions
 	
-	func gridPointForPosition(position: CGPoint) -> GridPoint {
+	func gridPointForPosition(position: CGPoint) -> MatrixIndex {
 		let x = Int(position.x)
 		let y = Int(position.y)
-		return GridPoint(row: x, column: y)
+		return (row: x, column: y)
 	}
 	
 	// MARK: - Adding Agents

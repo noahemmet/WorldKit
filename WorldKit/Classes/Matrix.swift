@@ -8,6 +8,13 @@
 
 import Foundation
 
+public typealias MatrixIndex = (row: Int, column: Int)
+
+public func ==(lhs: (row: Int, column: Int), rhs: (row: Int, column: Int)) -> Bool {
+	return lhs.column == rhs.column && lhs.row == rhs.row
+}
+
+
 public struct Matrix<T: Hashable> {
 	public typealias Element = T
 	public let rows: Int
@@ -64,10 +71,10 @@ public struct Matrix<T: Hashable> {
 		return elements.indexOf(element)
 	}
 	
-	public func gridPointOfIndex(index: Int) -> GridPoint {
+	public func gridPointOfIndex(index: Int) -> MatrixIndex {
 		let row = index / rows
 		let column = index % columns
-		return GridPoint(row: row, column: column)
+		return (row: row, column: column)
 	}
 	
 	private func indexIsValidForRow(row: Int, column: Int) -> Bool {
@@ -80,7 +87,7 @@ public struct Matrix<T: Hashable> {
 extension Matrix: SequenceType {
 	public func generate() -> AnyGenerator<Element> {
 		var isFirstElement = true
-		var nextPoint: GridPoint = GridPoint(row: 0, column: 0)
+		var nextPoint: MatrixIndex = (row: 0, column: 0)
 		return AnyGenerator<Element> {
 			if isFirstElement {
 				isFirstElement = false
