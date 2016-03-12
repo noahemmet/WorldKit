@@ -35,14 +35,16 @@ public struct World {
 	public init<C: Cell>(grid: Grid, cellForPoint: (gridPoint: GridPoint) -> C) {
 		self.agents = []
 		self.cells = Matrix(rows: grid.rows, columns: grid.columns) { (row, column) in
-			return cellForPoint(gridPoint: GridPoint(row: row, column: column))
+			let cell = cellForPoint(gridPoint: GridPoint(row: row, column: column))
+			cell.position = CGPoint(x: row, y: column)
+			return cell
 		}
 	}
 	
-	public init<C: Cell>(grid: Grid, cellType: C.Type) {
-		self.agents = []
-		self.cells = Matrix(rows: grid.rows, columns: grid.columns, repeatedValue: C())	// this is wrong
-	}
+//	public init<C: Cell>(grid: Grid, cellType: C.Type) {
+//		self.agents = []
+//		self.cells = Matrix(rows: grid.rows, columns: grid.columns, repeatedValue: C())	// this is wrong
+//	}
 	
 	// MARK: - Positions
 	

@@ -9,6 +9,7 @@ let initialNumSheep = 50
 
 let initialWorld = World(grid: Grid(rows: 10, columns: 10)) { gridPoint in
 	let grass = Grass()
+	grass.position = CGPoint(x: gridPoint.row, y: gridPoint.column)
 	grass.growthInterval = Int(arc4random_uniform(70))
 	return grass
 }
