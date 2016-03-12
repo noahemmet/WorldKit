@@ -60,5 +60,23 @@ class MatrixTestCase: XCTestCase {
 		XCTAssertEqual(rangedMatrix.rows, 9)
 		XCTAssertEqual(rangedMatrix.columns, 2)
 	}
-
+	
+	func testRangeSubscriptWithin() {
+		var rangedMatrix = matrix[point: (5, 5), within: 1]
+		XCTAssertEqual(rangedMatrix.rows, 3)
+		XCTAssertEqual(rangedMatrix.columns, 3)
+		
+		rangedMatrix = matrix[point: (5, 5), within: 2]
+		XCTAssertEqual(rangedMatrix.rows, 5)
+		XCTAssertEqual(rangedMatrix.columns, 5)
+		
+		// with trimming
+		rangedMatrix = matrix[point: (0, 0), within: 1]
+		XCTAssertEqual(rangedMatrix.rows, 2)
+		XCTAssertEqual(rangedMatrix.columns, 2)
+		
+		rangedMatrix = matrix[point: (0, 0), within: 2]
+		XCTAssertEqual(rangedMatrix.rows, 3)
+		XCTAssertEqual(rangedMatrix.columns, 3)
+	}
 }

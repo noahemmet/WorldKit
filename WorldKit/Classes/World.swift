@@ -109,14 +109,18 @@ public struct World {
 	
 	public func cellsNearPoint(point: CGPoint, radius: CGFloat = 1, limit: Int? = nil) -> Set<Cell> {
 		let newPoint = CGPoint(x: point.x, y: point.y)
-		let filteredWithin = cells.filter { return $0.position.distanceToPoint(newPoint) < radius }
-		let flattened = filteredWithin.flatMap { $0 }
+		let filtered = cells.filter { return $0.position.distanceToPoint(newPoint) < radius }
+		let flattened = filtered.flatMap { $0 }
 		return Set(flattened)
 	}
 	
 	public func cellsNearAgent(agent: Agent, radius: CGFloat = 1) -> Set<Cell> {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
+	
+//	public func cellsNearAgent(agent: Agent, within: Int = 1) -> Set<Cell> {
+//		
+//	}
 	
 //	public func cellsNearGridPoint(point: MatrixIndex, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
 //		let foo = cells[0..<3]
