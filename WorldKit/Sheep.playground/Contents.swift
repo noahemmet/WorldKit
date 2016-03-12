@@ -7,12 +7,7 @@ let grassGrowthTime = 10
 let sheepReproduceProbability = 0.5
 let initialNumSheep = 50
 
-let initialWorld = World(rows: 10, columns: 10) { gridPoint in
-	let grass = Grass()
-	grass.position = CGPoint(x: gridPoint.row, y: gridPoint.column)
-	grass.growthInterval = Int(arc4random_uniform(70))
-	return grass
-}
+let initialWorld = World(rows: 10, columns: 10, cellType: Grass.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 let canvasView = CanvasView(worldView: worldView)

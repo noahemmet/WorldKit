@@ -14,7 +14,6 @@ public func ==(lhs: (row: Int, column: Int), rhs: (row: Int, column: Int)) -> Bo
 	return lhs.column == rhs.column && lhs.row == rhs.row
 }
 
-
 public struct Matrix<T: Hashable> {
 	public typealias Element = T
 	public let rows: Int

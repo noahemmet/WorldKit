@@ -11,11 +11,12 @@ import SpriteKit
 
 public class WorldScene: SKScene {
 	
-	public var cellSprites: [[CellSprite]] = [[]]
-	public var agentSprites: Set<AgentSprite> {
-		let sprites = children.filter { $0 is AgentSprite && !($0 is CellSprite) } as! [AgentSprite]
-		return Set(sprites)
-	}
+	static var minimumTimePerUpdate: NSTimeInterval = 0.05
+	var previousUpdate: NSTimeInterval = 0
+	
+	public var cellSprites: Matrix<CellSprite>!
+	public var agentSprites: Set<AgentSprite>
+	
 	public var cellSize: CGSize = CGSize.zero
 	public var agentSize: CGSize = CGSize.zero
 	public let worldSequence: WorldSequence
@@ -24,6 +25,7 @@ public class WorldScene: SKScene {
 	public init(size: CGSize, worldSequence: WorldSequence) {
 		self.worldSequence = worldSequence
 		self.generator = worldSequence.generate()
+		self.agentSprites = []
 		super.init(size: size)
 		let initialWorld = worldSequence.current
 		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.cells.columns), height: frame.size.height / CGFloat(initialWorld.cells.rows))
@@ -31,21 +33,15 @@ public class WorldScene: SKScene {
 		var red:  CGFloat = 0.2
 		var blue: CGFloat = 0.8
 		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.cells.rows * initialWorld.cells.columns)
-		
-		for point in initialWorld.cells.enumerate() {
-			let gridPoint = initialWorld.cells.gridPointOfIndex(point.index)
-			if gridPoint.row == 0 {
-				cellSprites.append([])
-			}
-			let cell = initialWorld.cells[gridPoint.column, gridPoint.row]
+		cellSprites = Matrix<CellSprite>(rows: initialWorld.cells.rows, columns: initialWorld.cells.columns) { (row, column) in
+			let cell = initialWorld.cells[column, row]
 			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
-			let cellSprite = CellSprite(agent: cell, size: cellSize)
-			cellSprites[gridPoint.column].append(cellSprite)
-//			cellSprite.position = positionForGridPoint(point)
-			configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
-			addChild(cellSprite)
+			let cellSprite = CellSprite(agent: cell, size: self.cellSize)
+			self.configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
+			self.addChild(cellSprite)
 			red += colorIncrement
 			blue -= colorIncrement
+			return cellSprite
 		}
 		worldSequence.current.delegate = self
 	}
@@ -55,7 +51,7 @@ public class WorldScene: SKScene {
 	}
 	
 	func cellSpriteForGridPoint(point: MatrixIndex) -> CellSprite {
-		return cellSprites[point.column][point.row]
+		return cellSprites[point.column, point.row]
 	}
 	
 	func positionForGridPosition(position: CGPoint) -> CGPoint {
@@ -76,8 +72,6 @@ public class WorldScene: SKScene {
 		return CGPoint(x: x, y: y)
 	}
 	
-	static var minimumTimePerUpdate: NSTimeInterval = 0.05
-	var previousUpdate: NSTimeInterval = 0
 	public override func update(currentTime: NSTimeInterval) {
 		super.update(currentTime)
 		let diffSeconds = currentTime - previousUpdate
@@ -86,12 +80,6 @@ public class WorldScene: SKScene {
 			if let next = generator.next() {
 				configureWorld(next)
 			}
-//			if let next = worldSequence.next {
-////				worldSequence.current.delegate = self
-//				next(world: worldSequence.current)
-////				worldSequence.current.delegate = self
-//				configureWorld(worldSequence.current)
-//			}
 		}
 	}
 	
@@ -99,7 +87,7 @@ public class WorldScene: SKScene {
 		for point in world.cells.enumerate() {
 			let gridPoint = world.cells.gridPointOfIndex(point.index)
 			let cell = world.cells[gridPoint.column, gridPoint.row]
-			let cellSprite = cellSprites[gridPoint.row][gridPoint.column]
+			let cellSprite = cellSprites[gridPoint.row, gridPoint.column]
 			configureAgentSprite(cellSprite, forAgent: cell, duration: duration)
 		}
 		
@@ -108,7 +96,6 @@ public class WorldScene: SKScene {
 				configureAgentSprite(sprite, forAgent: agent, duration: duration)
 			}
 		}
-		
 	}
 	
 	internal func configureAgentSprite(agentSprite: AgentSprite, forAgent agent: Agent, duration: NSTimeInterval) {
@@ -124,16 +111,17 @@ public class WorldScene: SKScene {
 }
 
 extension WorldScene: WorldDelegate {
+	
 	func world(world: World, didAddAgent agent: Agent) {
-//		print(agent)
-//		print("did add")
 		let agentSprite = AgentSprite(agent: agent, size: agentSize)
 		addChild(agentSprite)
+		agentSprites.insert(agentSprite)
 		configureAgentSprite(agentSprite, forAgent: agent, duration: 0)
 	}
 	
 	func world(world: World, didRemoveAgent agent: Agent) {
 		let sprite = agentSprites.filter { $0.uuid == agent.uuid }.first!
+		agentSprites.remove(sprite)
 		removeChildrenInArray([sprite])
 	}
 

@@ -24,14 +24,6 @@ public struct World {
 		self.cells = world.cells
 	}
 	
-	public init(rows: Int, columns: Int) {
-		self.init(rows: rows, columns: columns) { gridPoint in
-			let cell = Cell() 
-			cell.position = CGPoint(x: gridPoint.row, y: gridPoint.column)
-			return cell
-		}
-	}
-	
 	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {
 		self.agents = []
 		self.cells = Matrix(rows: rows, columns: columns) { (row, column) in
@@ -41,10 +33,18 @@ public struct World {
 		}
 	}
 	
-//	public init<C: Cell>(grid: Grid, cellType: C.Type) {
-//		self.agents = []
-//		self.cells = Matrix(rows: grid.rows, columns: grid.columns, repeatedValue: C())	// this is wrong
-//	}
+	public init<C: Cell>(rows: Int, columns: Int, cellType: C.Type) {
+		self.init(rows: rows, columns: columns) { _ in
+			return C.init()
+		}
+	}
+	
+	public init(rows: Int, columns: Int) {
+		self.init(rows: rows, columns: columns) { gridPoint in
+			let cell = Cell()
+			return cell
+		}
+	}
 	
 	// MARK: - Positions
 	
