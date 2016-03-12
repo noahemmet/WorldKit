@@ -34,6 +34,7 @@
 		865BD4711C93AEB200D5392B /* WorldSequenceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */; };
 		865BD4721C93AEB200D5392B /* WorldTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46B1C93AEB200D5392B /* WorldTestCase.swift */; };
 		865BD4731C93AEB200D5392B /* WorldViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */; };
+		865BD47D1C93B1AB00D5392B /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD47C1C93B1AB00D5392B /* Matrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewTestCase.swift; sourceTree = "<group>"; };
 		865BD4741C93AEBD00D5392B /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; };
 		865BD4751C93AF2400D5392B /* Sheep.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Sheep.playground; sourceTree = "<group>"; };
+		865BD47C1C93B1AB00D5392B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				865BD44B1C93AEA600D5392B /* Grid.swift */,
 				865BD44F1C93AEA600D5392B /* Units.swift */,
+				865BD47C1C93B1AB00D5392B /* Matrix.swift */,
 			);
 			name = Units;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				865BD4621C93AEA600D5392B /* World.swift in Sources */,
 				865BD4641C93AEA600D5392B /* WorldSequence.swift in Sources */,
 				865BD45C1C93AEA600D5392B /* GoPanelView.swift in Sources */,
+				865BD47D1C93B1AB00D5392B /* Matrix.swift in Sources */,
 				865BD4541C93AEA600D5392B /* Agent.swift in Sources */,
 				865BD45F1C93AEA600D5392B /* SetExtensions.swift in Sources */,
 				865BD45E1C93AEA600D5392B /* Parameters.swift in Sources */,

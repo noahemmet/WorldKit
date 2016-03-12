@@ -18,20 +18,22 @@ public struct World {
 	
 	var agents: Set<Agent>
 	var cells: [[Cell]]
+	var matrix: Matrix<Cell>
 //	var cellGrid: CellGrid
 	var allCells: [Cell] {
 		return cells.flatten().flatMap { $0 }
 	}
-	let grid: Grid
+//	let grid: Grid
 	
 	internal init(world: World) {
 		self.agents = world.agents
 		self.cells = world.cells
-		self.grid = world.grid
+		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
+//		self.grid = world.grid
 	}
 	
 	public init(grid: Grid) {
-		self.grid = grid
+//		self.grid = grid
 		self.agents = []
 		self.cells = []
 		for point in grid {
@@ -42,10 +44,11 @@ public struct World {
 			cell.position = CGPoint(x: point.row, y: point.column)
 			self.cells[point.column].append(cell)
 		}
+		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
 	}
 	
 	public init<C: Cell>(grid: Grid, cellForPoint: ((gridPoint: GridPoint) -> C)? = nil) {
-		self.grid = grid
+//		self.grid = grid
 		self.agents = []
 		self.cells = []
 		for point in grid {
@@ -56,10 +59,11 @@ public struct World {
 			cell.position = CGPoint(x: point.row, y: point.column)
 			self.cells[point.column].append(cell)
 		}
+		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
 	}
 	
 	public init<C: Cell>(grid: Grid, cellType: C.Type) {
-		self.grid = grid
+//		self.grid = grid
 		self.agents = []
 		self.cells = []
 		for point in grid {
@@ -70,6 +74,7 @@ public struct World {
 			cell.position = CGPoint(x: point.row, y: point.column)
 			self.cells[point.column].append(cell)
 		}
+		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
 	}
 	
 //	func next() -> World {

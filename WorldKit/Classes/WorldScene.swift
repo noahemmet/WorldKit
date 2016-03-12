@@ -26,19 +26,19 @@ public class WorldScene: SKScene {
 		self.generator = worldSequence.generate()
 		super.init(size: size)
 		let initialWorld = worldSequence.current
-		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.grid.columns), height: frame.size.height / CGFloat(initialWorld.grid.rows))
+		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.matrix.columns), height: frame.size.height / CGFloat(initialWorld.matrix.rows))
 		agentSize = CGSize(width: cellSize.width / 2, height: cellSize.height / 2)
 		var red:  CGFloat = 0.2
 		var blue: CGFloat = 0.8
-		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.grid.rows * initialWorld.grid.columns)
-		for point in initialWorld.grid {
-			if point.row == 0 {
+		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.matrix.rows * initialWorld.matrix.columns)
+		for point in initialWorld.matrix {
+			if point.point.row == 0 {
 				cellSprites.append([])
 			}
-			let cell = initialWorld.cells[point.column][point.row]
+			let cell = initialWorld.cells[point.point.column][point.point.row]
 			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: cellSize)
-			cellSprites[point.column].append(cellSprite)
+			cellSprites[point.point.column].append(cellSprite)
 //			cellSprite.position = positionForGridPoint(point)
 			configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
 			addChild(cellSprite)

@@ -15,6 +15,7 @@ let initialWorld = World(grid: Grid(rows: 10, columns: 10)) { gridPoint in
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 let canvasView = CanvasView(worldView: worldView)
+
 /*:
 Some documentation goes here
 */
