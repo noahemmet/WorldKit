@@ -49,6 +49,14 @@ public struct Matrix<T: Hashable> {
 		}
 	}
 	
+	/**
+	Filter by ranges of columns and rows. 
+	
+	- parameter rowsInRange:		Range of rows to filter by. Range will automatically trim to stay within bounds.
+	- parameter columnsInRange:	Range of columns to filter by. Range will automatically trim to stay within bounds.
+	
+	- returns: A trimmed `Matrix`.
+	*/
 	public subscript(rows rowsInRange: Range<Int>, columns columnsInRange: Range<Int>) -> Matrix<Element> {
 		let trimmedRowRange = max(0, rowsInRange.startIndex) ..< min(rows, rowsInRange.endIndex)
 		let trimmedColumnRange = max(0, columnsInRange.startIndex) ..< min(columns, columnsInRange.endIndex)
@@ -60,9 +68,23 @@ public struct Matrix<T: Hashable> {
 		}
 	}
 	
+	/**
+	Filter by indexes within a point.
+	
+	- parameter point:	The center point around which to filter.
+	- parameter within:	The number of vertical and horizontal elements around the point.
+	
+	- returns: A trimmed `Matrix`.
+	*/
 	public subscript(point point: MatrixIndex, within within: Int) -> Matrix<Element> {
 		let rowRange = (point.row - within) ... (point.row + within)
 		let columnRange = (point.column - within) ... (point.column + within)
+		guard rowRange.startIndex <= rows && columnRange.startIndex <= columns else {
+			// empty
+			return Matrix<Element>(rows: 0, columns: 0) { rows, columns in
+				return self[rows, columns]
+			}
+		}
 		return self[rows: rowRange, columns: columnRange]
 	}
 	

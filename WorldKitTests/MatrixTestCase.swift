@@ -47,9 +47,11 @@ class MatrixTestCase: XCTestCase {
 		let rangedMatrix = matrix[rows: 1 ... 2, columns: 0 ..< 2]
 		XCTAssertEqual(rangedMatrix.rows, 2)
 		XCTAssertEqual(rangedMatrix.columns, 2)
+		
 		var element = rangedMatrix[0, 1]
 		XCTAssertEqual(element.row, 1)
 		XCTAssertEqual(element.column, 1)
+		
 		element = rangedMatrix[1, 1]
 		XCTAssertEqual(element.row, 2)
 		XCTAssertEqual(element.column, 1)

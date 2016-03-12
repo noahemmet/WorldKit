@@ -42,7 +42,7 @@ class WorldSequenceTestCase: XCTestCase {
 		for world in worldSequence {
 			let agent = world.agents.first!
 			agent.move(.Right)
-			let _ = world.cellsNearAgent(agent)
+			let _ = world.cellsNearAgent(agent, within: 1)
 		}
 		let lastPostionX = worldSequence.current.agents.first!.position.x
 		XCTAssertNotEqual(firstPostionX, lastPostionX)

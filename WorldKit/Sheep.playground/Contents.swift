@@ -73,7 +73,7 @@ worldSequence.updater = { world in
 	if let sheep = sheep {
 		sheep.position.y += 0.1
 		sheep.position.x += 0.1
-		for nearbyGrass in world.cellsNearAgent(sheep) as! Set<Grass> {
+		for nearbyGrass in world.cellsNearAgent(sheep, within: 1) as! Set<Grass> {
 			if sheep.energy < 50 {
 				if sheep.eatGrass(nearbyGrass) {
 					break

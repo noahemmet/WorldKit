@@ -118,9 +118,16 @@ public struct World {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
 	
-//	public func cellsNearAgent(agent: Agent, within: Int = 1) -> Set<Cell> {
-//		
-//	}
+	public func cellsNearPoint(point: MatrixIndex, within: Int = 1) -> Set<Cell> {
+//		let index = (Int(point.x), Int(point.y))
+		let filtered = cells[point: point, within: within]
+		return Set(filtered.elements)
+	}
+	
+	public func cellsNearAgent(agent: Agent, within: Int = 1) -> Set<Cell> {
+		let point = gridPointForPosition(agent.position)
+		return cellsNearPoint(point, within: within)
+	}
 	
 //	public func cellsNearGridPoint(point: MatrixIndex, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
 //		let foo = cells[0..<3]
