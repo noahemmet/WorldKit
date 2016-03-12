@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Matrix<T> {
+public struct Matrix<T: Hashable> {
 	public typealias Element = T
 	public let rows: Int
 	public let columns: Int
@@ -50,6 +50,16 @@ public struct Matrix<T> {
 		}
 	}
 	
+	public subscript(element: Element) -> Int? {
+		return elements.indexOf(element)
+	}
+	
+	public func gridPointOfIndex(index: Int) -> GridPoint {
+		let row = index / rows
+		let column = index % columns
+		return GridPoint(row: row, column: column)
+	}
+	
 	private func indexIsValidForRow(row: Int, column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
@@ -58,13 +68,13 @@ public struct Matrix<T> {
 // MARK: - SequenceType / SequenceType
 
 extension Matrix: SequenceType {
-	public func generate() -> AnyGenerator<(point: GridPoint, element: Element)> {
+	public func generate() -> AnyGenerator<Element> {
 		var isFirstElement = true
 		var nextPoint: GridPoint = GridPoint(row: 0, column: 0)
-		return AnyGenerator<(point: GridPoint, element: Element)> {
+		return AnyGenerator<Element> {
 			if isFirstElement {
 				isFirstElement = false
-				return (nextPoint, self[nextPoint.column, nextPoint.row])
+				return self[nextPoint.column, nextPoint.row]
 			}
 			
 			if nextPoint.row == self.rows - 1 && nextPoint.column == self.columns - 1 {
@@ -78,8 +88,7 @@ extension Matrix: SequenceType {
 				// a row in a column
 				nextPoint.row += 1
 			}
-			
-			return (nextPoint, self[nextPoint.column, nextPoint.row])
+			return self[nextPoint.column, nextPoint.row]
 		}
 	}
 }

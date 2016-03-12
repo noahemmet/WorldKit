@@ -31,14 +31,16 @@ public class WorldScene: SKScene {
 		var red:  CGFloat = 0.2
 		var blue: CGFloat = 0.8
 		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.matrix.rows * initialWorld.matrix.columns)
-		for point in initialWorld.matrix {
-			if point.point.row == 0 {
+		
+		for point in initialWorld.matrix.enumerate() {
+			let gridPoint = initialWorld.matrix.gridPointOfIndex(point.index)
+			if gridPoint.row == 0 {
 				cellSprites.append([])
 			}
-			let cell = initialWorld.cells[point.point.column][point.point.row]
+			let cell = initialWorld.cells[gridPoint.column][gridPoint.row]
 			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: cellSize)
-			cellSprites[point.point.column].append(cellSprite)
+			cellSprites[gridPoint.column].append(cellSprite)
 //			cellSprite.position = positionForGridPoint(point)
 			configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
 			addChild(cellSprite)
