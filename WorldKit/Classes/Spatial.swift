@@ -36,18 +36,18 @@ public enum RelativeDirection {
 }
 
 public enum AbsoluteDirection {
-	case Up
-	case Down
-	case Left
-	case Right
+	case North
+	case East
+	case South
+	case West
 	
 	public var degrees: Degree {
 		let degrees: Degree
 		switch self {
-		case .Up:  degrees =   0
-		case .Down: degrees = 180
-		case .Right:		degrees =  90
-		case .Left:		degrees = 270
+		case .North: degrees =   0
+		case .East:  degrees =  90
+		case .South: degrees = 180
+		case .West:  degrees = 270
 		}
 		return degrees
 	}
