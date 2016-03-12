@@ -34,6 +34,7 @@
 		865BD4721C93AEB200D5392B /* WorldTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46B1C93AEB200D5392B /* WorldTestCase.swift */; };
 		865BD4731C93AEB200D5392B /* WorldViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */; };
 		865BD47D1C93B1AB00D5392B /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD47C1C93B1AB00D5392B /* Matrix.swift */; };
+		86B01F2B1C9409AF00D1C7A2 /* CanvasViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		865BD4741C93AEBD00D5392B /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; };
 		865BD4751C93AF2400D5392B /* Sheep.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Sheep.playground; sourceTree = "<group>"; };
 		865BD47C1C93B1AB00D5392B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasViewTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */,
 				865BD46B1C93AEB200D5392B /* WorldTestCase.swift */,
 				865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */,
+				86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */,
 				865BD4381C93AE9100D5392B /* Info.plist */,
 			);
 			path = WorldKitTests;
@@ -357,6 +360,7 @@
 				865BD46D1C93AEB200D5392B /* CellGridTestCase.swift in Sources */,
 				865BD46E1C93AEB200D5392B /* GridTestCase.swift in Sources */,
 				865BD4701C93AEB200D5392B /* WorldSceneTestCase.swift in Sources */,
+				86B01F2B1C9409AF00D1C7A2 /* CanvasViewTestCase.swift in Sources */,
 				865BD4721C93AEB200D5392B /* WorldTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,7 +38,7 @@ class Sheep: Agent {
 }
 
 class Grass: Cell {
-	var growthInterval = 0
+	var growthInterval = Int(arc4random_uniform(70))
 	var regrowthTime = 50
 	
 	override func update() {

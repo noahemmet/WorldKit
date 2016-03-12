@@ -2,10 +2,5 @@
 <Timeline
    version = "3.0">
    <TimelineItems>
-      <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/emmet/Documents/Projects/NeighborKit2/NeighborKit2/Sheep.playground#CharacterRangeLen=51&amp;CharacterRangeLoc=448&amp;EndingLineNumber=17&amp;StartingLineNumber=17&amp;Timestamp=479463533.360845"
-         selectedRepresentationIndex = "0"
-         shouldTrackSuperviewWidth = "NO">
-      </LoggerValueHistoryTimelineItem>
    </TimelineItems>
 </Timeline>

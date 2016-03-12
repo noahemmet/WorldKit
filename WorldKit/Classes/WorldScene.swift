@@ -34,7 +34,7 @@ public class WorldScene: SKScene {
 		var blue: CGFloat = 0.8
 		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.cells.rows * initialWorld.cells.columns)
 		cellSprites = Matrix<CellSprite>(rows: initialWorld.cells.rows, columns: initialWorld.cells.columns) { (row, column) in
-			let cell = initialWorld.cells[column, row]
+			let cell = initialWorld.cells[row, column]
 			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: self.cellSize)
 			self.configureAgentSprite(cellSprite, forAgent: cell, duration: 0)

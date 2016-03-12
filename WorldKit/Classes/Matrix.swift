@@ -104,7 +104,7 @@ extension Matrix: SequenceType {
 				// a row in a column
 				nextPoint.row += 1
 			}
-			return self[nextPoint.column, nextPoint.row]
+			return self[nextPoint.row, nextPoint.column] // this seems backwards
 		}
 	}
 }
