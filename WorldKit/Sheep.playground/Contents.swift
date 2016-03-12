@@ -48,9 +48,9 @@ class Grass: Cell {
 	func grow() {
 		if growthInterval < regrowthTime {
 			growthInterval += 1
-			color = .brownColor()
+//			color = .brownColor()
 		} else {
-			color = .greenColor()
+//			color = .greenColor()
 		}
 	}
 	
@@ -64,7 +64,7 @@ class Grass: Cell {
 	}
 }
 
-worldSequence.current.addAgents(1, type: Sheep.self)
+worldSequence.current.addAgents(10, type: Sheep.self)
 
 //sheep.position = CGPoint(x: 1, y: 1)
 //sheep.color = .whiteColor()

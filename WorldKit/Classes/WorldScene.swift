@@ -20,11 +20,10 @@ public class WorldScene: SKScene {
 	public var cellSize: CGSize = CGSize.zero
 	public var agentSize: CGSize = CGSize.zero
 	public let worldSequence: WorldSequence
-	public var generator: AnyGenerator<World>
+	private lazy var generator: AnyGenerator<World> = self.worldSequence.generate()
 	
 	public init(size: CGSize, worldSequence: WorldSequence) {
 		self.worldSequence = worldSequence
-		self.generator = worldSequence.generate()
 		self.agentSprites = []
 		super.init(size: size)
 		let initialWorld = worldSequence.current

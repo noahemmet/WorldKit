@@ -118,6 +118,10 @@ public struct World {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
 	
+//	public func cellsNearGridPoint(point: MatrixIndex, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
+//		let foo = cells[0..<3]
+//	}
+	
 //	public func cellsNearGridPoint(point: GridPoint, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
 //		let newPoint = CGPoint(x: point.x, y: point.y)
 //		let filteredWithin = cells.map { $0.filter { return $0.position.distanceToPoint(newPoint) < radius } }
