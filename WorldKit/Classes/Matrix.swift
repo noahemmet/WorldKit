@@ -49,6 +49,17 @@ public struct Matrix<T: Hashable> {
 		}
 	}
 	
+	public subscript(rows rowsInRange: Range<Int>, columns columnsInRange: Range<Int>) -> Matrix<Element> {
+		let trimmedRowRange = max(0, rowsInRange.startIndex) ..< min(rows, rowsInRange.endIndex)
+		let trimmedColumnRange = max(0, columnsInRange.startIndex) ..< min(columns, columnsInRange.endIndex)
+		
+		return Matrix(rows: trimmedRowRange.count, columns: trimmedColumnRange.count) { (row, column) in
+			let offsetRow = row + rowsInRange.startIndex
+			let offsetColumn = column + columnsInRange.startIndex
+			return self[offsetRow, offsetColumn]
+		}
+	}
+	
 	public subscript(row row: Int) -> [Element] {
 		get {
 			assert(row < rows)

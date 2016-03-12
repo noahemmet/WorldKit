@@ -48,9 +48,9 @@ class Grass: Cell {
 	func grow() {
 		if growthInterval < regrowthTime {
 			growthInterval += 1
-//			color = .brownColor()
+			color = .brownColor()
 		} else {
-//			color = .greenColor()
+			color = .greenColor()
 		}
 	}
 	
