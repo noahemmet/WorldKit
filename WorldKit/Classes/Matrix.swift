@@ -17,8 +17,18 @@ public struct Matrix<T: Hashable> {
 	public init(rows: Int, columns: Int, repeatedValue: Element) {
 		self.rows = rows
 		self.columns = columns
-		
-		self.elements = [Element](count: rows * columns, repeatedValue: repeatedValue)
+		self.elements = Array<Element>(count: rows * columns, repeatedValue: repeatedValue)
+	}
+	
+	public init(rows: Int, columns: Int, elementInit: (row: Int, column: Int) -> Element) {
+		self.rows = rows
+		self.columns = columns
+		elements = []
+		for row in 0 ..< rows {
+			for column in 0 ..< columns {
+				elements.append(elementInit(row: row, column: column))
+			}
+		}
 	}
 	
 	public subscript(row: Int, column: Int) -> Element {

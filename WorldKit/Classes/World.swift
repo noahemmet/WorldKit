@@ -17,73 +17,35 @@ public struct World {
 	weak var delegate: WorldDelegate?
 	
 	var agents: Set<Agent>
-	var cells: [[Cell]]
-	var matrix: Matrix<Cell>
-//	var cellGrid: CellGrid
-	var allCells: [Cell] {
-		return cells.flatten().flatMap { $0 }
-	}
-//	let grid: Grid
+	var cells: Matrix<Cell>
 	
 	internal init(world: World) {
 		self.agents = world.agents
 		self.cells = world.cells
-		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
-//		self.grid = world.grid
 	}
 	
 	public init(grid: Grid) {
-//		self.grid = grid
-		self.agents = []
-		self.cells = []
-		for point in grid {
-			if point.row == 0 {
-				self.cells.append([])
-			}
-			let cell = Cell()
-			cell.position = CGPoint(x: point.row, y: point.column)
-			self.cells[point.column].append(cell)
+		self.init(grid: grid) { gridPoint in
+			let cell = Cell() 
+			cell.position = CGPoint(x: gridPoint.row, y: gridPoint.column)
+			return cell
 		}
-		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
 	}
 	
-	public init<C: Cell>(grid: Grid, cellForPoint: ((gridPoint: GridPoint) -> C)? = nil) {
-//		self.grid = grid
+	public init<C: Cell>(grid: Grid, cellForPoint: (gridPoint: GridPoint) -> C) {
 		self.agents = []
-		self.cells = []
-		for point in grid {
-			if point.row == 0 {
-				self.cells.append([])
-			}
-			let cell = cellForPoint?(gridPoint: point) ?? Cell()
-			cell.position = CGPoint(x: point.row, y: point.column)
-			self.cells[point.column].append(cell)
+		self.cells = Matrix(rows: grid.rows, columns: grid.columns) { (row, column) in
+			return cellForPoint(gridPoint: GridPoint(row: row, column: column))
 		}
-		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
 	}
 	
 	public init<C: Cell>(grid: Grid, cellType: C.Type) {
-//		self.grid = grid
 		self.agents = []
-		self.cells = []
-		for point in grid {
-			if point.row == 0 {
-				self.cells.append([])
-			}
-			let cell = cellType.init()
-			cell.position = CGPoint(x: point.row, y: point.column)
-			self.cells[point.column].append(cell)
-		}
-		matrix = Matrix(rows: cells.count, columns: cells.first!.count, repeatedValue: Cell())
+		self.cells = Matrix(rows: grid.rows, columns: grid.columns, repeatedValue: C())	// this is wrong
 	}
 	
-//	func next() -> World {
-//		let nextWorld = World(world: self)
-//		// TODO
-//		return nextWorld
-//	}
-	
 	// MARK: - Positions
+	
 	func gridPointForPosition(position: CGPoint) -> GridPoint {
 		let x = Int(position.x)
 		let y = Int(position.y)
@@ -145,7 +107,7 @@ public struct World {
 	
 	public func cellsNearPoint(point: CGPoint, radius: CGFloat = 1, limit: Int? = nil) -> Set<Cell> {
 		let newPoint = CGPoint(x: point.x, y: point.y)
-		let filteredWithin = cells.map { $0.filter { return $0.position.distanceToPoint(newPoint) < radius } }
+		let filteredWithin = cells.filter { return $0.position.distanceToPoint(newPoint) < radius }
 		let flattened = filteredWithin.flatMap { $0 }
 		return Set(flattened)
 	}

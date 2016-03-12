@@ -26,18 +26,18 @@ public class WorldScene: SKScene {
 		self.generator = worldSequence.generate()
 		super.init(size: size)
 		let initialWorld = worldSequence.current
-		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.matrix.columns), height: frame.size.height / CGFloat(initialWorld.matrix.rows))
+		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.cells.columns), height: frame.size.height / CGFloat(initialWorld.cells.rows))
 		agentSize = CGSize(width: cellSize.width / 2, height: cellSize.height / 2)
 		var red:  CGFloat = 0.2
 		var blue: CGFloat = 0.8
-		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.matrix.rows * initialWorld.matrix.columns)
+		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.cells.rows * initialWorld.cells.columns)
 		
-		for point in initialWorld.matrix.enumerate() {
-			let gridPoint = initialWorld.matrix.gridPointOfIndex(point.index)
+		for point in initialWorld.cells.enumerate() {
+			let gridPoint = initialWorld.cells.gridPointOfIndex(point.index)
 			if gridPoint.row == 0 {
 				cellSprites.append([])
 			}
-			let cell = initialWorld.cells[gridPoint.column][gridPoint.row]
+			let cell = initialWorld.cells[gridPoint.column, gridPoint.row]
 			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: cellSize)
 			cellSprites[gridPoint.column].append(cellSprite)
@@ -96,11 +96,11 @@ public class WorldScene: SKScene {
 	}
 	
 	internal func configureWorld(world: World, duration: NSTimeInterval = WorldScene.minimumTimePerUpdate) {
-		for (rowIndex, columns) in world.cells.enumerate() {
-			for (columnIndex, cell) in columns.enumerate() {
-				let cellSprite = cellSprites[rowIndex][columnIndex]
-				configureAgentSprite(cellSprite, forAgent: cell, duration: duration)
-			}
+		for point in world.cells.enumerate() {
+			let gridPoint = world.cells.gridPointOfIndex(point.index)
+			let cell = world.cells[gridPoint.column, gridPoint.row]
+			let cellSprite = cellSprites[gridPoint.row][gridPoint.column]
+			configureAgentSprite(cellSprite, forAgent: cell, duration: duration)
 		}
 		
 		for agent in world.agents {
