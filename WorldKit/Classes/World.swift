@@ -24,17 +24,17 @@ public struct World {
 		self.cells = world.cells
 	}
 	
-	public init(grid: Grid) {
-		self.init(grid: grid) { gridPoint in
+	public init(rows: Int, columns: Int) {
+		self.init(rows: rows, columns: columns) { gridPoint in
 			let cell = Cell() 
 			cell.position = CGPoint(x: gridPoint.row, y: gridPoint.column)
 			return cell
 		}
 	}
 	
-	public init<C: Cell>(grid: Grid, cellForPoint: (gridPoint: GridPoint) -> C) {
+	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: GridPoint) -> C) {
 		self.agents = []
-		self.cells = Matrix(rows: grid.rows, columns: grid.columns) { (row, column) in
+		self.cells = Matrix(rows: rows, columns: columns) { (row, column) in
 			let cell = cellForPoint(gridPoint: GridPoint(row: row, column: column))
 			cell.position = CGPoint(x: row, y: column)
 			return cell

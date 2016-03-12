@@ -15,8 +15,8 @@ class CellGridTestCase: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()
-		let grid = Grid(rows: 10, columns: 10)
-		world = World(grid: grid)
+//		let grid = Grid(rows: 10, columns: 10)
+//		world = World(grid: grid)
 	}
 
     func testCellGrid() {

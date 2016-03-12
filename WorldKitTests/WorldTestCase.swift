@@ -15,8 +15,7 @@ class WorldTestCase: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()
-		let grid = Grid(rows: 10, columns: 10)
-		world = World(grid: grid)
+		world = World(rows: 10, columns: 10)
 		
 		world.addAgents(8, agentInit: Agent())
 		world.addAgents(2, type: Agent.self, configure: nil)

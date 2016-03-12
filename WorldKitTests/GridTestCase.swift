@@ -11,13 +11,13 @@ import WorldKit
 
 class GridTestCase: XCTestCase {
 
-    func testGenerator() {
-		let grid = Grid(rows: 10, columns: 10)
-		var count: Int = 0
-		for _ in grid {
-			count += 1
-		}
-		XCTAssertEqual(count, grid.rows * grid.columns)
-    }
+//    func testGenerator() {
+//		let grid = Grid(rows: 10, columns: 10)
+//		var count: Int = 0
+//		for _ in grid {
+//			count += 1
+//		}
+//		XCTAssertEqual(count, grid.rows * grid.columns)
+//    }
 
 }

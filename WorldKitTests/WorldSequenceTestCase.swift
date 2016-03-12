@@ -13,7 +13,7 @@ class WorldSequenceTestCase: XCTestCase {
 	var worldSequence: WorldSequence!
     override func setUp() {
         super.setUp()
-		let firstWorld = World(grid: Grid(rows: 10, columns: 10)) { gridPoint in
+		let firstWorld = World(rows: 10, columns: 10) { gridPoint in
 			return Cell()
 		}
 		worldSequence = WorldSequence(initial: firstWorld, maxTicks: 100)
