@@ -80,5 +80,15 @@ class MatrixTestCase: XCTestCase {
 		rangedMatrix = matrix[point: (0, 0), within: 2]
 		XCTAssertEqual(rangedMatrix.rows, 3)
 		XCTAssertEqual(rangedMatrix.columns, 3)
+		
+		rangedMatrix = matrix[point: (10, 10), within: 1]
+		XCTAssertEqual(rangedMatrix.rows, 1)
+		XCTAssertEqual(rangedMatrix.columns, 1)
+	}
+	
+	func testRangeSubscriptOutOfBounds() {
+		let rangedMatrix = matrix[point: (50, 50), within: 1]
+		XCTAssertEqual(rangedMatrix.rows, 0)
+		XCTAssertEqual(rangedMatrix.columns, 0)
 	}
 }

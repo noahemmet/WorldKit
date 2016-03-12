@@ -20,6 +20,12 @@ public struct Matrix<T: Hashable> {
 	public let columns: Int
 	var elements: [Element]
 	
+	public init() {
+		self.rows = 0
+		self.columns = 0
+		self.elements = []
+	}
+	
 	public init(rows: Int, columns: Int, repeatedValue: Element) {
 		self.rows = rows
 		self.columns = columns
@@ -80,10 +86,8 @@ public struct Matrix<T: Hashable> {
 		let rowRange = (point.row - within) ... (point.row + within)
 		let columnRange = (point.column - within) ... (point.column + within)
 		guard rowRange.startIndex <= rows && columnRange.startIndex <= columns else {
-			// empty
-			return Matrix<Element>(rows: 0, columns: 0) { rows, columns in
-				return self[rows, columns]
-			}
+			// out of bounds; return empty Matrix
+			return Matrix<Element>()
 		}
 		return self[rows: rowRange, columns: columnRange]
 	}

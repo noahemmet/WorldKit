@@ -107,19 +107,17 @@ public struct World {
 	
 	// MARK: - Finding Cells
 	
-	public func cellsNearPoint(point: CGPoint, radius: CGFloat = 1, limit: Int? = nil) -> Set<Cell> {
-		let newPoint = CGPoint(x: point.x, y: point.y)
-		let filtered = cells.filter { return $0.position.distanceToPoint(newPoint) < radius }
+	public func cellsNearPoint(point: CGPoint, radius: CGFloat, limit: Int? = nil) -> Set<Cell> {
+		let filtered = cells.filter { return $0.position.distanceToPoint(point) < radius }
 		let flattened = filtered.flatMap { $0 }
 		return Set(flattened)
 	}
 	
-	public func cellsNearAgent(agent: Agent, radius: CGFloat = 1) -> Set<Cell> {
+	public func cellsNearAgent(agent: Agent, radius: CGFloat) -> Set<Cell> {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
 	
 	public func cellsNearPoint(point: MatrixIndex, within: Int = 1) -> Set<Cell> {
-//		let index = (Int(point.x), Int(point.y))
 		let filtered = cells[point: point, within: within]
 		return Set(filtered.elements)
 	}
@@ -128,19 +126,4 @@ public struct World {
 		let point = gridPointForPosition(agent.position)
 		return cellsNearPoint(point, within: within)
 	}
-	
-//	public func cellsNearGridPoint(point: MatrixIndex, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
-//		let foo = cells[0..<3]
-//	}
-	
-//	public func cellsNearGridPoint(point: GridPoint, within: Int = 1, limit: Int? = nil) -> Set<Cell> {
-//		let newPoint = CGPoint(x: point.x, y: point.y)
-//		let filteredWithin = cells.map { $0.filter { return $0.position.distanceToPoint(newPoint) < radius } }
-//		let flattened = filteredWithin.flatMap { $0 }
-//		return Set(flattened)
-//	}
-//	
-//	public func cellsNearAgent(agent: Agent, within: Int = 1) -> Set<Cell> {
-//		return cellsNearGridPoint(, within: <#T##Int#>, limit: <#T##Int?#>)
-//	}
 }
