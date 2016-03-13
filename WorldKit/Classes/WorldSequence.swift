@@ -11,7 +11,7 @@ import Foundation
 public class WorldSequence: SequenceType {
 	public var previous: World?
 	public var current: World
-	public var updater: ((world: World) -> Void)?
+	public var updater: ((world: inout World) -> Void)?
 	public let maxTicks: Int64?
 	public private(set) var tick: Int64 = 0
 	public var seed: UInt32 = 0 {
@@ -32,7 +32,7 @@ public class WorldSequence: SequenceType {
 			}
 			self.current.cells.forEach { $0.update() }
 			self.current.agents.forEach { $0.update() }
-			self.updater?(world: self.current)
+			self.updater?(world: &self.current)
 			self.tick += 1
 			return self.current
 		}
