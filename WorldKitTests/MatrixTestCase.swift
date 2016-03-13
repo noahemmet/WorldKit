@@ -64,30 +64,30 @@ class MatrixTestCase: XCTestCase {
 	}
 	
 	func testRangeSubscriptWithin() {
-		var rangedMatrix = matrix[point: (5, 5), within: 1]
+		var rangedMatrix = matrix[nearPoint: (5, 5), within: 1]
 		XCTAssertEqual(rangedMatrix.rows, 3)
 		XCTAssertEqual(rangedMatrix.columns, 3)
 		
-		rangedMatrix = matrix[point: (5, 5), within: 2]
+		rangedMatrix = matrix[nearPoint: (5, 5), within: 2]
 		XCTAssertEqual(rangedMatrix.rows, 5)
 		XCTAssertEqual(rangedMatrix.columns, 5)
 		
 		// with trimming
-		rangedMatrix = matrix[point: (0, 0), within: 1]
+		rangedMatrix = matrix[nearPoint: (0, 0), within: 1]
 		XCTAssertEqual(rangedMatrix.rows, 2)
 		XCTAssertEqual(rangedMatrix.columns, 2)
 		
-		rangedMatrix = matrix[point: (0, 0), within: 2]
+		rangedMatrix = matrix[nearPoint: (0, 0), within: 2]
 		XCTAssertEqual(rangedMatrix.rows, 3)
 		XCTAssertEqual(rangedMatrix.columns, 3)
 		
-		rangedMatrix = matrix[point: (10, 10), within: 1]
+		rangedMatrix = matrix[nearPoint: (10, 10), within: 1]
 		XCTAssertEqual(rangedMatrix.rows, 1)
 		XCTAssertEqual(rangedMatrix.columns, 1)
 	}
 	
 	func testRangeSubscriptOutOfBounds() {
-		let rangedMatrix = matrix[point: (50, 50), within: 1]
+		let rangedMatrix = matrix[nearPoint: (50, 50), within: 1]
 		XCTAssertEqual(rangedMatrix.rows, 0)
 		XCTAssertEqual(rangedMatrix.columns, 0)
 	}

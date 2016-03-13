@@ -19,11 +19,6 @@ public struct World {
 	var agents: Set<Agent>
 	var cells: Matrix<Cell>
 	
-	internal init(world: World) {
-		self.agents = world.agents
-		self.cells = world.cells
-	}
-	
 	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {
 		self.agents = []
 		self.cells = Matrix(rows: rows, columns: columns) { (row, column) in
@@ -118,7 +113,7 @@ public struct World {
 	}
 	
 	public func cellsNearPoint(point: MatrixIndex, within: Int = 1) -> Set<Cell> {
-		let filtered = cells[point: point, within: within]
+		let filtered = cells[nearPoint: point, within: within]
 		return Set(filtered.elements)
 	}
 	

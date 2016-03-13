@@ -49,8 +49,10 @@ class Grass: Cell {
 		if growthInterval < regrowthTime {
 			growthInterval += 1
 			color = .brownColor()
+//			color = color.colorWithAlphaComponent(color.alphaComponent - 0.05)
 		} else {
 			color = .greenColor()
+//			color = color.colorWithAlphaComponent(1)
 		}
 	}
 	

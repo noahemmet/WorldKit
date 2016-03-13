@@ -82,7 +82,7 @@ public struct Matrix<T: Hashable> {
 	
 	- returns: A trimmed `Matrix`.
 	*/
-	public subscript(point point: MatrixIndex, within within: Int) -> Matrix<Element> {
+	public subscript(nearPoint point: MatrixIndex, within within: Int) -> Matrix<Element> {
 		let rowRange = (point.row - within) ... (point.row + within)
 		let columnRange = (point.column - within) ... (point.column + within)
 		guard rowRange.startIndex <= rows && columnRange.startIndex <= columns else {
