@@ -11,7 +11,7 @@ import SpriteKit
 
 public class WorldScene: SKScene {
 	
-	static var minimumTimePerUpdate: NSTimeInterval = 0.05
+	static var minimumTimePerUpdate: NSTimeInterval = 0.3
 	var previousUpdate: NSTimeInterval = 0
 	
 	public var cellSprites: Matrix<CellSprite>!

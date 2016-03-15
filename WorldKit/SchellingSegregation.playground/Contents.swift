@@ -3,7 +3,7 @@
 import XCPlayground
 import WorldKit
 
-let tolerance = 0.1
+let tolerance = 0.6
 
 let initialWorld = World(rows: 10, columns: 10, cellType: Cell.self)
 let worldSequence = WorldSequence(initial: initialWorld)
@@ -26,7 +26,7 @@ class Family: Agent {
 			case .Two: return (total.0,     total.1 + 1)
 			}
 		}
-		
+//		print(numTypes)
 		switch type {
 		case .One: return Double(numTypes.ones) / Double(neighbors.count)
 		case .Two: return Double(numTypes.twos) / Double(neighbors.count)
@@ -48,7 +48,8 @@ worldSequence.current.addAgents(100, type: Family.self) { family in
 worldSequence.updater = { world in
 	for family in world.agentsOfType(Family) {
 		let neighbors = world.agentsNearPosition(family.position, within: 1) as! Set<Family>
-		print(neighbors.count)
+//		print(neighbors.count)
+		XCPlaygroundPage.currentPage.captureValue(family.similarity(neighbors: neighbors) * 2, withIdentifier: "similarity")
 		if family.isHappy(neighbors: neighbors) {
 			family.color = .yellowColor()
 		} else {
