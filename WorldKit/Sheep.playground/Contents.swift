@@ -11,9 +11,6 @@ let initialWorld = World(rows: 10, columns: 10, cellType: Grass.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
-/*:
-Some documentation goes here
-*/
 XCPlaygroundPage.currentPage.liveView = worldView
 
 class Sheep: Agent {

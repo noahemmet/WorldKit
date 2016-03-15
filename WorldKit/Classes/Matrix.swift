@@ -18,7 +18,7 @@ public struct Matrix<T: Hashable> {
 	public typealias Element = T
 	public let rows: Int
 	public let columns: Int
-	var elements: [Element]
+	public var elements: [Element]
 	
 	public init() {
 		self.rows = 0
@@ -121,6 +121,13 @@ public struct Matrix<T: Hashable> {
 	
 	private func indexIsValidForRow(row: Int, column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
+	}
+	
+	public var randomIndex: MatrixIndex {
+		let x = Int(rand()) % rows
+		let y = rand() % Int32(columns)
+		let index = (x, Int(y))
+		return index
 	}
 }
 

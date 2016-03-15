@@ -82,6 +82,7 @@
 		865BD47C1C93B1AB00D5392B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		867DDDA91C94C31E005576A4 /* RangeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeExtensions.swift; sourceTree = "<group>"; };
 		867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTestCase.swift; sourceTree = "<group>"; };
+		86AF955F1C97E084000BE890 /* SchellingSegregation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SchellingSegregation.playground; sourceTree = "<group>"; };
 		86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasViewTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +128,7 @@
 			children = (
 				865BD4411C93AEA600D5392B /* Classes */,
 				865BD44C1C93AEA600D5392B /* Parameters.swift */,
+				86AF955F1C97E084000BE890 /* SchellingSegregation.playground */,
 				865BD4741C93AEBD00D5392B /* TestPlayground.playground */,
 				865BD4751C93AF2400D5392B /* Sheep.playground */,
 				865BD42A1C93AE9000D5392B /* WorldKit.h */,

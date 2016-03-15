@@ -17,7 +17,7 @@ public struct World {
 	weak var delegate: WorldDelegate?
 	
 	var agents: Set<Agent>
-	var cells: Matrix<Cell>
+	public var cells: Matrix<Cell>
 	
 	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {
 		self.agents = []
@@ -43,10 +43,14 @@ public struct World {
 	
 	// MARK: - Positions
 	
-	func gridPointForPosition(position: CGPoint) -> MatrixIndex {
+	public func gridPointForPosition(position: CGPoint) -> MatrixIndex {
 		let x = Int(position.x)
 		let y = Int(position.y)
 		return (row: x, column: y)
+	}
+	
+	public func positionForMatrixIndex(index: MatrixIndex) -> CGPoint {
+		return CGPoint(x: index.row, y: index.column)
 	}
 	
 	// MARK: - Adding Agents
@@ -75,9 +79,9 @@ public struct World {
 	// MARK: - Removing Agents
 	
 	public mutating func removeAgent(agent: Agent) {
-		print(agents.count)
+//		print(agents.count)
 		agents.remove(agent)
-		print(agents.count)
+//		print(agents.count)
 		delegate?.world(self, didRemoveAgent: agent)
 	}
 	
@@ -98,6 +102,29 @@ public struct World {
 			return Set(limited)
 		}
 		return Set(filtered.randomized[0..<filtered.count])
+	}
+	
+	public func agentsNearPosition(position: CGPoint, within: Int = 1) -> Set<Agent> {
+		let matrixIndex = (Int(position.x), Int(position.y))
+		let filtered = cells[nearPoint: matrixIndex, within: within]
+		var agents: [Agent] = []
+		for cell in filtered {
+			let matchingAgents = self.agents.filter { agent in
+				let within = CGFloat(within)
+				let rangeX = (cell.position.x - within) ..< (cell.position.x + within)
+				let rangeY = (cell.position.y - within) ..< (cell.position.y + within)
+				
+				let withinX = rangeX ~= agent.position.x
+				let withinY = rangeY ~= agent.position.y
+//				print(rangeX)
+//				print(agent.position.x)
+//				print(withinX)
+				return withinX && withinY
+			}
+				
+			agents.appendContentsOf(matchingAgents)
+		}
+		return Set(agents)
 	}
 	
 	// MARK: - Finding Cells
