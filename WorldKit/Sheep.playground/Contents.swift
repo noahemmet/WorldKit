@@ -10,12 +10,11 @@ let initialNumSheep = 50
 let initialWorld = World(rows: 10, columns: 10, cellType: Grass.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
-let canvasView = CanvasView(worldView: worldView)
 
 /*:
 Some documentation goes here
 */
-XCPlaygroundPage.currentPage.liveView = canvasView
+XCPlaygroundPage.currentPage.liveView = worldView
 
 class Sheep: Agent {
 	//	var color = NSColor.whiteColor()
@@ -29,7 +28,7 @@ class Sheep: Agent {
 	}
 	
 	func live() {
-		energy -= 5
+		energy -= 35
 	}
 	
 	override func update() {

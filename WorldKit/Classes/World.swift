@@ -97,7 +97,7 @@ public struct World {
 			let limited = filtered.randomized[0..<newLimit]
 			return Set(limited)
 		}
-		return Set(filtered)
+		return Set(filtered.randomized[0..<filtered.count])
 	}
 	
 	// MARK: - Finding Cells
