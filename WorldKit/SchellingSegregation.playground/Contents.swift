@@ -39,7 +39,7 @@ class Family: Agent {
 	}
 }
 
-worldSequence.current.addAgents(100, type: Family.self) { family in
+worldSequence.current.addAgents(50, type: Family.self) { family in
 	let randomIndex = worldSequence.current.cells.randomIndex
 	family.position = worldSequence.current.positionForMatrixIndex(randomIndex)
 //	print(worldSequence.current.cells.randomIndex)
@@ -51,7 +51,7 @@ worldSequence.updater = { world in
 //		print(neighbors.count)
 		XCPlaygroundPage.currentPage.captureValue(family.similarity(neighbors: neighbors) * 2, withIdentifier: "similarity")
 		if family.isHappy(neighbors: neighbors) {
-			family.color = .yellowColor()
+			family.color = .greenColor()
 		} else {
 			family.color = .redColor()
 			let randomIndex = world.cells.randomIndex

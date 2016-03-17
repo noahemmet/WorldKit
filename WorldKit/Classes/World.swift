@@ -35,10 +35,7 @@ public struct World {
 	}
 	
 	public init(rows: Int, columns: Int) {
-		self.init(rows: rows, columns: columns) { gridPoint in
-			let cell = Cell()
-			return cell
-		}
+		self.init(rows: rows, columns: columns, cellType: Cell.self)
 	}
 	
 	// MARK: - Positions
