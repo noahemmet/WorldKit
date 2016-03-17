@@ -17,7 +17,7 @@ public struct World {
 	weak var delegate: WorldDelegate?
 //	typealias CellType = Cell
 	
-	var agents: Set<Agent>
+	public var agents: Set<Agent>
 	public var cells: Matrix<Cell>
 	
 	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {

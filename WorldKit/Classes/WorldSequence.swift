@@ -14,6 +14,7 @@ public class WorldSequence: SequenceType {
 	public var updater: ((world: inout World) -> Void)?
 	public let maxTicks: Int64?
 	public private(set) var tick: Int64 = 0
+	public var stop = false
 	public var seed: UInt32 = 0 {
 		didSet {
 			srand(seed)
@@ -27,7 +28,7 @@ public class WorldSequence: SequenceType {
 	
 	public func generate() -> AnyGenerator<World> {
 		return AnyGenerator<World> {
-			guard self.tick < self.maxTicks else {
+			guard self.tick < self.maxTicks && !self.stop else {
 				return nil
 			}
 			self.current.cells.forEach { $0.update(world: self.current) }

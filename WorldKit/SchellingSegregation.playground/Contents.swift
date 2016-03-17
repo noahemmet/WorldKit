@@ -3,13 +3,13 @@
 import XCPlayground
 import WorldKit
 
-let tolerance: Float = 0.6
-let density = 90
+let tolerance: Float = 0.01
+let density = 100
 
 var percentSimilar = 100.0
 var percentHappy = 100.0
 
-let initialWorld = World(rows: 30, columns: 30, cellType: House.self)
+let initialWorld = World(rows: 10, columns: 10, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
@@ -21,7 +21,7 @@ enum FamilyType {
 }
 
 class House: Cell {
-	
+	weak var occupant: Family?
 }
 
 class Family: Agent {
@@ -50,10 +50,13 @@ class Family: Agent {
 //		print(position)
 		let randomIndex = world.cells.randomIndex
 		position = world.positionForMatrixIndex(randomIndex)
-//		let house = world.cells[Int(position.x), Int(position.y)] as! House
-//		if let _ = house.occupant {
-//			findNewSpot(world: world)
-//		}
+		let house = world.cells[Int(position.x), Int(position.y)] as! House
+		if let _ = house.occupant {
+			findNewSpot(world: world)
+			let newHouse = world.cells[Int(position.x), Int(position.y)] as! House
+			house.occupant = nil
+			newHouse.occupant = self
+		}
 	}
 }
 
@@ -63,21 +66,34 @@ for cell in worldSequence.current.cells {
 	if random() % 100 < density {
 		let family = Family()
 		family.position = house.position
-//		house.occupant = family
+		house.occupant = family
 		worldSequence.current.addAgent(family)
 	}
 }
 
 worldSequence.updater = { world in
-	print("1")
-	for family in world.agentsOfType(Family.self) {
-		family.similarNearbyCount = world.agentsNearPosition(family.position, within: 1).filter { ($0 as! Family).type == family.type }.count
-		family.otherNearbyCount = world.agentsNearPosition(family.position, within: 1).filter { ($0 as! Family).type != family.type }.count
+	var allAreHappy = true
+	for agent in world.agents {
+		let family = agent as! Family
+		let point = (row: Int(family.position.x), column: Int(family.position.y))
+		let nearbyHouses = world.cells[nearPoint: (point.row, point.column), within: 1]
+		for cell in nearbyHouses {
+			let house = cell as! House
+		}
+		
+		family.similarNearbyCount = nearbyHouses.filter { ($0 as! House).occupant?.type == family.type }.count
+		family.otherNearbyCount   = nearbyHouses.filter { ($0 as! House).occupant?.type != family.type }.count
 		let similarityPercent: Float = (Float(family.similarNearbyCount) * Float(family.totalNearby) / 100)
+//		print(similarityPercent)
 		family.isHappy = similarityPercent <= tolerance
-		//		print(similarityPercent)
 		if !family.isHappy {
 			family.findNewSpot(world: world)
+			allAreHappy = false
+		} else {
+//			print("happy")
 		}
+	}
+	if allAreHappy {
+		worldSequence.stop = true
 	}
 }
