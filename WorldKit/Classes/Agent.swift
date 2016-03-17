@@ -23,7 +23,7 @@ public class Agent: PositionTrait {
 		uuidCounter += 1
 	}
 	
-	public func update() {
+	public func update(world world: World) {
 		
 	}
 }

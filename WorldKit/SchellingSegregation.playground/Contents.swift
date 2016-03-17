@@ -3,9 +3,13 @@
 import XCPlayground
 import WorldKit
 
-let tolerance = 0.6
+let tolerance: Float = 0.6
+let density = 90
 
-let initialWorld = World(rows: 10, columns: 10, cellType: Cell.self)
+var percentSimilar = 100.0
+var percentHappy = 100.0
+
+let initialWorld = World(rows: 30, columns: 30, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
@@ -16,46 +20,64 @@ enum FamilyType {
 	case Two
 }
 
+class House: Cell {
+	
+}
+
 class Family: Agent {
 	var type: FamilyType = (rand() % 2 == 0) ? .One : .Two
-	
-	func similarity(neighbors neighbors: Set<Family>) -> Double {
-		let numTypes: (ones: Int, twos: Int) = neighbors.reduce((0, 0)) { total, family in
-			switch family.type {
-			case .One: return (total.0 + 1, total.1)
-			case .Two: return (total.0,     total.1 + 1)
-			}
-		}
-//		print(numTypes)
-		switch type {
-		case .One: return Double(numTypes.ones) / Double(neighbors.count)
-		case .Two: return Double(numTypes.twos) / Double(neighbors.count)
-		}
+	var isHappy: Bool = false
+	var similarNearbyCount = 0
+	var otherNearbyCount = 0
+	var totalNearby: Int {
+		return similarNearbyCount + otherNearbyCount 
 	}
 	
-	func isHappy(neighbors neighbors: Set<Family>) -> Bool {
-//		print(self.similarity(neighbors: neighbors))
-		return (self.similarity(neighbors: neighbors) >= tolerance)
+	required init() {
+		super.init()
+		color = (type == .One) ? .blueColor() : .yellowColor()
+	}
+	
+//	override func update(world world: World) {
+//		
+//		
+//	}
+	
+	func findNewSpot(world world: World) {
+//		print(position)
+//		heading += Degree(random() % 360)
+//		move(.Forward)
+//		print(position)
+		let randomIndex = world.cells.randomIndex
+		position = world.positionForMatrixIndex(randomIndex)
+//		let house = world.cells[Int(position.x), Int(position.y)] as! House
+//		if let _ = house.occupant {
+//			findNewSpot(world: world)
+//		}
 	}
 }
 
-worldSequence.current.addAgents(50, type: Family.self) { family in
-	let randomIndex = worldSequence.current.cells.randomIndex
-	family.position = worldSequence.current.positionForMatrixIndex(randomIndex)
-//	print(worldSequence.current.cells.randomIndex)
+
+for cell in worldSequence.current.cells {
+	let house = cell as! House
+	if random() % 100 < density {
+		let family = Family()
+		family.position = house.position
+//		house.occupant = family
+		worldSequence.current.addAgent(family)
+	}
 }
 
 worldSequence.updater = { world in
-	for family in world.agentsOfType(Family) {
-		let neighbors = world.agentsNearPosition(family.position, within: 1) as! Set<Family>
-//		print(neighbors.count)
-		XCPlaygroundPage.currentPage.captureValue(family.similarity(neighbors: neighbors) * 2, withIdentifier: "similarity")
-		if family.isHappy(neighbors: neighbors) {
-			family.color = .greenColor()
-		} else {
-			family.color = .redColor()
-			let randomIndex = world.cells.randomIndex
-			family.position = world.positionForMatrixIndex(randomIndex)
+	print("1")
+	for family in world.agentsOfType(Family.self) {
+		family.similarNearbyCount = world.agentsNearPosition(family.position, within: 1).filter { ($0 as! Family).type == family.type }.count
+		family.otherNearbyCount = world.agentsNearPosition(family.position, within: 1).filter { ($0 as! Family).type != family.type }.count
+		let similarityPercent: Float = (Float(family.similarNearbyCount) * Float(family.totalNearby) / 100)
+		family.isHappy = similarityPercent <= tolerance
+		//		print(similarityPercent)
+		if !family.isHappy {
+			family.findNewSpot(world: world)
 		}
 	}
 }

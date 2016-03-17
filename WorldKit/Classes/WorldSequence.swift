@@ -30,8 +30,8 @@ public class WorldSequence: SequenceType {
 			guard self.tick < self.maxTicks else {
 				return nil
 			}
-			self.current.cells.forEach { $0.update() }
-			self.current.agents.forEach { $0.update() }
+			self.current.cells.forEach { $0.update(world: self.current) }
+			self.current.agents.forEach { $0.update(world: self.current) }
 			self.updater?(world: &self.current)
 			self.tick += 1
 			return self.current

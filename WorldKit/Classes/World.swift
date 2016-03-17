@@ -15,6 +15,7 @@ protocol WorldDelegate: class {
 
 public struct World {
 	weak var delegate: WorldDelegate?
+//	typealias CellType = Cell
 	
 	var agents: Set<Agent>
 	public var cells: Matrix<Cell>

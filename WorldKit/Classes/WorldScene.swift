@@ -100,8 +100,10 @@ public class WorldScene: SKScene {
 	internal func configureAgentSprite(agentSprite: AgentSprite, forAgent agent: Agent, duration: NSTimeInterval) {
 		agentSprite.color = agent.color
 		let newPosition = positionForGridPosition(agent.position)
-		if duration > 0 {
-			agentSprite.runAction(SKAction.moveTo(newPosition, duration: duration))
+		if duration > 0 && false {
+			agentSprite.removeActionForKey("move")
+			let moveTo = SKAction.moveTo(newPosition, duration: duration)
+			agentSprite.runAction(moveTo, withKey: "move")
 		} else {
 			agentSprite.position = newPosition
 		}

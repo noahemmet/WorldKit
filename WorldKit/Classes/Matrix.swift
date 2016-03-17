@@ -113,6 +113,10 @@ public struct Matrix<T: Hashable> {
 		return elements.indexOf(element)
 	}
 	
+//	public subscript(type type: Element) -> Int? {
+//		return elements.indexOf(element)
+//	}
+	
 	public func gridPointOfIndex(index: Int) -> MatrixIndex {
 		let row = index / rows
 		let column = index % columns
