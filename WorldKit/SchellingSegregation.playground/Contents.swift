@@ -3,13 +3,13 @@
 import XCPlayground
 import WorldKit
 
-let tolerance: Float = 0.5
-let density = 60
+let tolerance: Float = 0.3
+let density = 70
 
 var percentSimilar = 100.0
 var percentHappy = 100.0
 
-let initialWorld = World(rows: 15, columns: 15, cellType: House.self)
+let initialWorld = World(rows: 20, columns: 20, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
@@ -59,7 +59,6 @@ class Family: Agent {
 				break
 			}
 		}
-		
 	}
 }
 
@@ -81,7 +80,12 @@ worldSequence.updater = { world in
 		let point = (row: Int(family.position.x), column: Int(family.position.y))
 		let nearbyHouses = world.cells[nearPoint: (point.row, point.column), within: 1]
 		
-		let otherCount = nearbyHouses.filter { ($0 as! House).occupant?.type != family.type }.count
+		let otherCount = nearbyHouses.filter { cell in
+			let house = cell as! House
+			let isOther = (house.occupant != nil && house.occupant!.type != family.type)
+			return isOther
+			}.count
+		
 		let similarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
 		XCPlaygroundPage.currentPage.captureValue(similarityPercent * similarityPercent, withIdentifier: "similarityPercent")
 		family.isHappy = similarityPercent <= tolerance
