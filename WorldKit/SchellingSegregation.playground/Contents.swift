@@ -74,6 +74,7 @@ for cell in worldSequence.current.cells {
 }
 
 worldSequence.updater = { world in
+	var totalSimilarity: Float = 0
 	var allAreHappy = true
 	for agent in world.agents {
 		let family = agent as! Family
@@ -87,15 +88,18 @@ worldSequence.updater = { world in
 			}.count
 		
 		let similarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
-		XCPlaygroundPage.currentPage.captureValue(similarityPercent * similarityPercent, withIdentifier: "similarityPercent")
 		family.isHappy = similarityPercent <= tolerance
 		
 		if !family.isHappy {
 			family.findNewSpot(world: &world)
 			allAreHappy = false
 		}
+		totalSimilarity += similarityPercent
 	}
-	print("tick")
+	let totalSimilarityPercent = totalSimilarity / Float(world.agents.count)
+//	print(totalSimilarityPercent)
+	XCPlaygroundPage.currentPage.captureValue(totalSimilarityPercent * 1, withIdentifier: "similarityPercent")
+
 	if allAreHappy {
 		print("all happy")
 		worldSequence.stop = true
