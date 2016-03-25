@@ -3,13 +3,13 @@
 import XCPlayground
 import WorldKit
 
-let tolerance: Float = 0.01
-let density = 100
+let tolerance: Float = 0.2
+let density = 70
 
 var percentSimilar = 100.0
 var percentHappy = 100.0
 
-let initialWorld = World(rows: 10, columns: 10, cellType: House.self)
+let initialWorld = World(rows: 15, columns: 15, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
@@ -38,25 +38,41 @@ class Family: Agent {
 		color = (type == .One) ? .blueColor() : .yellowColor()
 	}
 	
-//	override func update(world world: World) {
-//		
-//		
-//	}
+	//	override func update(world world: World) {
+	//		
+	//		
+	//	}
 	
-	func findNewSpot(world world: World) {
-//		print(position)
-//		heading += Degree(random() % 360)
-//		move(.Forward)
-//		print(position)
-		let randomIndex = world.cells.randomIndex
-		position = world.positionForMatrixIndex(randomIndex)
-		let house = world.cells[Int(position.x), Int(position.y)] as! House
-		if let _ = house.occupant {
-			findNewSpot(world: world)
-			let newHouse = world.cells[Int(position.x), Int(position.y)] as! House
-			house.occupant = nil
-			newHouse.occupant = self
+	func findNewSpot(inout world world: World) {
+		//		print(position)
+		//		heading += Degree(random() % 360)
+		//		move(.Forward)
+		let originalHouse = world.cells[Int(position.x), Int(position.y)] as! House
+		var newHouse = originalHouse
+//		for cell in world.cells {
+//			let house = cell as! House
+//			if house.occupant == nil {
+//				originalHouse.occupant = nil
+//				house.occupant = self
+//				position = house.position
+//				print("moved")
+//				break
+//			}
+//		}
+		for _ in 0..<200 {
+			let randomIndex = world.cells.randomIndex
+			let newPosition = world.positionForMatrixIndex(randomIndex)
+			//			print(newPosition)
+			newHouse = world.cells[Int(newPosition.x), Int(newPosition.y)] as! House
+			if newHouse.occupant == nil {
+				originalHouse.occupant = nil
+				newHouse.occupant = self
+				position = newHouse.position
+//				print("moved")
+				break
+			}
 		}
+		
 	}
 }
 
@@ -71,6 +87,8 @@ for cell in worldSequence.current.cells {
 	}
 }
 
+//worldSequence.current.addAgents(100, type: Family.self)
+
 worldSequence.updater = { world in
 	var allAreHappy = true
 	for agent in world.agents {
@@ -84,16 +102,22 @@ worldSequence.updater = { world in
 		family.similarNearbyCount = nearbyHouses.filter { ($0 as! House).occupant?.type == family.type }.count
 		family.otherNearbyCount   = nearbyHouses.filter { ($0 as! House).occupant?.type != family.type }.count
 		let similarityPercent: Float = (Float(family.similarNearbyCount) * Float(family.totalNearby) / 100)
+		
 //		print(similarityPercent)
 		family.isHappy = similarityPercent <= tolerance
+		
 		if !family.isHappy {
-			family.findNewSpot(world: world)
+			family.findNewSpot(world: &world)
 			allAreHappy = false
 		} else {
 //			print("happy")
 		}
 	}
 	if allAreHappy {
+		print("all happy")
 		worldSequence.stop = true
 	}
+	
 }
+
+print("99")
