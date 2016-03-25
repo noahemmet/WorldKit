@@ -74,7 +74,7 @@ for cell in worldSequence.current.cells {
 }
 
 worldSequence.updater = { world in
-	var totalSimilarity: Float = 0
+	var totalDisimilarity: Float = 0
 	var allAreHappy = true
 	for agent in world.agents {
 		let family = agent as! Family
@@ -87,21 +87,24 @@ worldSequence.updater = { world in
 			return isOther
 			}.count
 		
-		let similarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
-		family.isHappy = similarityPercent <= tolerance
+		let disimilarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
+		family.isHappy = disimilarityPercent <= tolerance
 		
 		if !family.isHappy {
 			family.findNewSpot(world: &world)
 			allAreHappy = false
 		}
-		totalSimilarity += similarityPercent
+		totalDisimilarity += disimilarityPercent
 	}
-	let totalSimilarityPercent = totalSimilarity / Float(world.agents.count)
-//	print(totalSimilarityPercent)
-	XCPlaygroundPage.currentPage.captureValue(totalSimilarityPercent * 1, withIdentifier: "similarityPercent")
-
+	let totalDisimilarityPercent = totalDisimilarity / Float(world.agents.count)
+	XCPlaygroundPage.currentPage.captureValue(totalDisimilarityPercent * 1, withIdentifier: "disimilarityPercent")
+	let totalHappy = world.agents.filter { ($0 as! Family).isHappy }.count
+	let percentHappy = Float(totalHappy) / Float(world.agents.count)
+	XCPlaygroundPage.currentPage.captureValue(percentHappy * 1, withIdentifier: "percentHappy")
+	
 	if allAreHappy {
-		print("all happy")
+		print("tolerance: \(tolerance)")
+		print("final similarity: \(1 - totalDisimilarityPercent)")
 		worldSequence.stop = true
 	}
 }
