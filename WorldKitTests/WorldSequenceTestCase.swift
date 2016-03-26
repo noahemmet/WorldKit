@@ -24,6 +24,15 @@ class WorldSequenceTestCase: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+	
+	func testAgentDelegate() {
+		let delegate = DelegateTester()
+		worldSequence.current.delegate = delegate
+		self.worldSequence.current.addAgents(1)
+		XCTAssertTrue(delegate.didAddAgentWasFired)
+		self.worldSequence.current.removeAgent(self.worldSequence.current.agents.first!)
+		XCTAssertTrue(delegate.didRemoveAgentWasFired)
+	}
 
     func testWorldSequenceUpdater() {
 		let delegate = DelegateTester()
@@ -33,6 +42,7 @@ class WorldSequenceTestCase: XCTestCase {
 				self.worldSequence.current.addAgents(10)
 			}
 		}
+		XCTAssertEqual(worldSequence.tick, worldSequence.maxTicks)
     }
 	
 	func testMove() {
@@ -51,11 +61,13 @@ class WorldSequenceTestCase: XCTestCase {
 }
 
 private class DelegateTester: WorldDelegate {
+	var didAddAgentWasFired = false
+	var didRemoveAgentWasFired = false
 	private func world(world: World, didAddAgent agent: Agent) {
-//		print(1)
+		didAddAgentWasFired = true
 	}
 	
 	private func world(world: World, didRemoveAgent agent: Agent) {
-//		print(1)
+		didRemoveAgentWasFired = true
 	}
 }

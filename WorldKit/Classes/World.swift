@@ -13,7 +13,7 @@ protocol WorldDelegate: class {
 	func world(world: World, didRemoveAgent agent: Agent)
 }
 
-public struct World {
+public class World {
 	weak var delegate: WorldDelegate?
 //	typealias CellType = Cell
 	
@@ -29,13 +29,13 @@ public struct World {
 		}
 	}
 	
-	public init<C: Cell>(rows: Int, columns: Int, cellType: C.Type) {
+	public convenience init<C: Cell>(rows: Int, columns: Int, cellType: C.Type) {
 		self.init(rows: rows, columns: columns) { _ in
 			return C.init()
 		}
 	}
 	
-	public init(rows: Int, columns: Int) {
+	public convenience init(rows: Int, columns: Int) {
 		self.init(rows: rows, columns: columns, cellType: Cell.self)
 	}
 	
@@ -53,12 +53,12 @@ public struct World {
 	
 	// MARK: - Adding Agents
 	
-	public mutating func addAgent(agent: Agent) {
+	public func addAgent(agent: Agent) {
 		agents.insert(agent)
 		delegate?.world(self, didAddAgent: agent)
 	}
 	
-	public mutating func addAgents<A: Agent>(number: Int, @autoclosure agentInit: () -> A) {
+	public func addAgents<A: Agent>(number: Int, @autoclosure agentInit: () -> A) {
 		for _ in 0 ..< number {
 			let agent = agentInit()
 			addAgent(agent)
@@ -66,7 +66,7 @@ public struct World {
 		}
 	}
 	
-	public mutating func addAgents<A: Agent>(number: Int, type: A.Type = A.self, configure: (A -> Void)? = nil) {
+	public func addAgents<A: Agent>(number: Int, type: A.Type = A.self, configure: (A -> Void)? = nil) {
 		let agents = (0..<number).map { _ in A.init() }
 		for agent in agents {
 			configure?(agent)
@@ -76,7 +76,7 @@ public struct World {
 	
 	// MARK: - Removing Agents
 	
-	public mutating func removeAgent(agent: Agent) {
+	public func removeAgent(agent: Agent) {
 //		print(agents.count)
 		agents.remove(agent)
 //		print(agents.count)

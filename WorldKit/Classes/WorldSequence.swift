@@ -11,7 +11,8 @@ import Foundation
 public class WorldSequence: SequenceType {
 	public var previous: World?
 	public var current: World
-	public var updater: ((world: inout World) -> Void)?
+	public var didEnd: ((world: World) -> Void)?
+	public var updater: ((world: World) -> Void)?
 	public let maxTicks: Int64?
 	public private(set) var tick: Int64 = 0
 	public var stop = false
@@ -29,11 +30,15 @@ public class WorldSequence: SequenceType {
 	public func generate() -> AnyGenerator<World> {
 		return AnyGenerator<World> {
 			guard self.tick < self.maxTicks && !self.stop else {
+				print("seq end")
+				self.didEnd?(world: self.current)
 				return nil
 			}
+//			print("num cells: ", self.current.cells.elements.count)
 			self.current.cells.forEach { $0.update(world: self.current) }
 			self.current.agents.forEach { $0.update(world: self.current) }
-			self.updater?(world: &self.current)
+			self.updater?(world: self.current)
+//			print("updater: ", self.updater)
 			self.tick += 1
 			return self.current
 		}

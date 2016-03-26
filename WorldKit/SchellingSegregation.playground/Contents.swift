@@ -5,15 +5,17 @@ import WorldKit
 import SchellingSegregation
 
 //let tolerance: Float = 0.3
-let density = 70
+let density = 90
 
 //var percentSimilar = 100.0
 //var percentHappy = 100.0
+WorldScene.minimumTimePerUpdate = 0.2
 
 let initialWorld = World(rows: 20, columns: 20, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
+XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 XCPlaygroundPage.currentPage.liveView = worldView
 
 
@@ -22,13 +24,14 @@ for cell in worldSequence.current.cells {
 	if random() % 100 < density {
 		let family = Family()
 		family.position = house.position
+		family.tolerance = 0.8
 		house.occupant = family
 		worldSequence.current.addAgent(family)
 	}
 }
 
 worldSequence.updater = { world in
-	print("tick")
+	print(world.agents.count)
 //	var totalDisimilarity: Float = 0
 //	var allAreHappy = true
 //	for agent in world.agents {

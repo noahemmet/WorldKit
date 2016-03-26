@@ -11,7 +11,7 @@ import SpriteKit
 
 public class WorldScene: SKScene {
 	
-	static var minimumTimePerUpdate: NSTimeInterval = 0.3
+	public static var minimumTimePerUpdate: NSTimeInterval = 0.3
 	var previousUpdate: NSTimeInterval = 0
 	
 	public var cellSprites: Matrix<CellSprite>!
@@ -73,7 +73,9 @@ public class WorldScene: SKScene {
 	
 	public override func update(currentTime: NSTimeInterval) {
 		super.update(currentTime)
+		
 		let diffSeconds = currentTime - previousUpdate
+		
 		if diffSeconds > WorldScene.minimumTimePerUpdate {
 			previousUpdate = currentTime
 			if let next = generator.next() {
@@ -100,7 +102,8 @@ public class WorldScene: SKScene {
 	internal func configureAgentSprite(agentSprite: AgentSprite, forAgent agent: Agent, duration: NSTimeInterval) {
 		agentSprite.color = agent.color
 		let newPosition = positionForGridPosition(agent.position)
-		if duration > 0 && false {
+		
+		if duration > 0 && worldSequence.tick > 1 {
 			agentSprite.removeActionForKey("move")
 			let moveTo = SKAction.moveTo(newPosition, duration: duration)
 			agentSprite.runAction(moveTo, withKey: "move")

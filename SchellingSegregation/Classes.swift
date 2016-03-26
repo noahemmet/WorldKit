@@ -30,7 +30,7 @@ public class Family: Agent {
 	
 	public required init() {
 		super.init()
-		color = (type == .One) ? .blueColor() : .yellowColor()
+		color = (type == .One) ? .magentaColor() : .yellowColor()
 	}
 	
 	public func findNewSpot(world world: World) {
@@ -62,6 +62,7 @@ public class Family: Agent {
 			}.count
 		
 		let disimilarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
+//		print("dis %: ", disimilarityPercent)
 		self.isHappy = disimilarityPercent <= tolerance
 		
 		if !self.isHappy {
