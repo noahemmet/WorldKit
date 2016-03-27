@@ -9,6 +9,21 @@
 import Foundation
 import WorldKit
 
+public var tolerance: Float = 0.4
+
+public func setup(world world: World, density: Int) {
+	for cell in world.cells {
+		let house = cell as! House
+		if random() % 100 < density {
+			let family = Family()
+			family.position = house.position
+			house.occupant = family
+			world.addAgent(family)
+		}
+	}
+
+}
+
 public enum FamilyType {
 	case One
 	case Two
@@ -19,11 +34,11 @@ public class House: Cell {
 }
 
 public class Family: Agent {
-	public var tolerance: Float = 0.3
 	public var type: FamilyType = (rand() % 2 == 0) ? .One : .Two
 	public var isHappy: Bool = false
 	public var similarNearbyCount = 0
 	public var otherNearbyCount = 0
+	public var disimilarityPercent: Float = 0
 	public var totalNearby: Int {
 		return similarNearbyCount + otherNearbyCount 
 	}
@@ -61,7 +76,7 @@ public class Family: Agent {
 			return isOther
 			}.count
 		
-		let disimilarityPercent: Float = Float(otherCount) / Float(nearbyHouses.elements.count)
+		disimilarityPercent = Float(otherCount) / Float(nearbyHouses.elements.count)
 //		print("dis %: ", disimilarityPercent)
 		self.isHappy = disimilarityPercent <= tolerance
 		

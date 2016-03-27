@@ -106,6 +106,7 @@ public class WorldScene: SKScene {
 		if duration > 0 && worldSequence.tick > 1 {
 			agentSprite.removeActionForKey("move")
 			let moveTo = SKAction.moveTo(newPosition, duration: duration)
+			moveTo.duration = duration
 			agentSprite.runAction(moveTo, withKey: "move")
 		} else {
 			agentSprite.position = newPosition
