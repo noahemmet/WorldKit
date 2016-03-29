@@ -41,7 +41,7 @@ XCPlaygroundPage.currentPage.liveView = worldView
 var hue:  CGFloat = 0.5
 var saturation: CGFloat = 0.8
 let colorIncrement: CGFloat = 0.01
-for cell in world.cells.spiral(from: MatrixPoint(row: 4, column: 4)) {
+for cell in world.cells.spiral(from: MatrixPoint(row: 5, column: 4), clockwise: false) {
 	cell.color = NSColor(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
 	hue += colorIncrement
 	saturation -= colorIncrement
@@ -71,7 +71,7 @@ extension Matrix {
 		return rows
 	}
 	
-	func extendedSelection(around centerPoint: MatrixPoint, range: Range<Int> = 1..<2) -> [[Element]] {
+	func extendedSelection(around centerPoint: MatrixPoint, range: Range<Int> = 1..<2, clockwise: Bool = true) -> [[Element]] {
 		var rings: [[Element]] = []
 		for ringIndex in range {
 			
@@ -84,21 +84,26 @@ extension Matrix {
 			// Edges
 			let offset = 1
 			let topRow: [Element] = elementsAt(column: topLeft.column, range: topLeft.row+offset..<bottomRight.row+offset)
-			let rightColumn: [Element] = elementsAt(row: bottomRight.row, range: bottomRight.column..<topRight.column).reverse()
-			let bottomRow: [Element] = elementsAt(column: bottomLeft.column, range: bottomLeft.row..<bottomRight.row).reverse()
+			let rightColumn: [Element] = elementsAt(row: bottomRight.row, range: bottomRight.column..<topRight.column)
+			let bottomRow: [Element] = elementsAt(column: bottomLeft.column, range: bottomLeft.row..<bottomRight.row)
 			let leftColumn: [Element] = elementsAt(row: bottomLeft.row, range: bottomLeft.column+offset..<topLeft.column+offset)
 			
-			let ring: [Element] = topRow + rightColumn + bottomRow + leftColumn
+			let ring: [Element]
+			if clockwise {
+				ring = topRow + rightColumn.reverse() + bottomRow.reverse() + leftColumn
+			} else {
+				ring = topRow.reverse() + leftColumn + bottomRow + rightColumn.reverse()
+			}
 			rings.append(ring)
 		}
 		return rings
 	}
 	
 	public func spiral(from centerPoint: MatrixPoint, start cardinality: PrincipalCardinalDirection = .NorthWest, clockwise: Bool = true) -> AnyGenerator<Element> {
-
+		
 		var ringIndex = 1
 		var elementIndex = 0
-		var nextRing = extendedSelection(around: centerPoint).first!
+		var nextRing = extendedSelection(around: centerPoint, clockwise: clockwise).first!
 		return AnyGenerator<Element> { 
 			if elementIndex < nextRing.count {
 				// Traverse each ring
@@ -110,7 +115,7 @@ extension Matrix {
 				ringIndex += 1
 				elementIndex = 0
 				let nextRange = ringIndex..<ringIndex+1
-				if let possibleNextRing = self.extendedSelection(around: centerPoint, range: nextRange).first where !possibleNextRing.isEmpty {
+				if let possibleNextRing = self.extendedSelection(around: centerPoint, range: nextRange, clockwise: clockwise).first where !possibleNextRing.isEmpty {
 					nextRing = possibleNextRing
 					let element = nextRing[0]
 					return element
