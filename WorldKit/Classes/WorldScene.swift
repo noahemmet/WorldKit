@@ -29,12 +29,14 @@ public class WorldScene: SKScene {
 		let initialWorld = worldSequence.current
 		cellSize = CGSize(width: frame.size.width / CGFloat(initialWorld.cells.columns), height: frame.size.height / CGFloat(initialWorld.cells.rows))
 		agentSize = CGSize(width: cellSize.width / 2, height: cellSize.height / 2)
+		
 		var red:  CGFloat = 0.2
 		var blue: CGFloat = 0.8
 		let colorIncrement: CGFloat = 0.6 / CGFloat(initialWorld.cells.rows * initialWorld.cells.columns)
 		cellSprites = Matrix<CellSprite>(rows: initialWorld.cells.rows, columns: initialWorld.cells.columns) { (row, column) in
 			let cell = initialWorld.cells[row, column]
-			cell.color = NSColor(red: red, green: 0.2, blue: blue, alpha: 1)
+			let flipColor = (row % 2 + column % 2) % 2 == 0 
+			cell.color = NSColor(white: flipColor ? 0.2 : 0.3, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: self.cellSize)
 			self.configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
 			self.addChild(cellSprite)
@@ -49,7 +51,7 @@ public class WorldScene: SKScene {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func cellSpriteForGridPoint(point: MatrixIndex) -> CellSprite {
+	func cellSpriteForGridPoint(point: MatrixPoint) -> CellSprite {
 		return cellSprites[point.column, point.row]
 	}
 	
@@ -59,7 +61,7 @@ public class WorldScene: SKScene {
 		return CGPoint(x: x, y: y)
 	}
 	
-	func positionForGridPoint(point: MatrixIndex) -> CGPoint {
+	func positionForGridPoint(point: MatrixPoint) -> CGPoint {
 		let x = CGFloat(point.column) * cellSize.width + (cellSize.width / 2)
 		let y = CGFloat(point.row) * cellSize.height + (cellSize.height / 2)
 		return CGPoint(x: x, y: y)

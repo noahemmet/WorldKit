@@ -55,7 +55,7 @@ public class Family: Agent {
 		let tries = 100
 		for _ in 0..<tries {
 			let randomIndex = world.cells.randomIndex
-			let newPosition = world.positionForMatrixIndex(randomIndex)
+			let newPosition = world.positionForMatrixPoint(randomIndex)
 			newHouse = world.cells[Int(newPosition.x), Int(newPosition.y)] as! House
 			if newHouse.occupant == nil {
 				originalHouse.occupant = nil

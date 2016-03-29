@@ -20,10 +20,10 @@ public class World {
 	public var agents: Set<Agent>
 	public var cells: Matrix<Cell>
 	
-	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixIndex) -> C) {
+	public init<C: Cell>(rows: Int, columns: Int, cellForPoint: (gridPoint: MatrixPoint) -> C) {
 		self.agents = []
 		self.cells = Matrix(rows: rows, columns: columns) { (row, column) in
-			let cell = cellForPoint(gridPoint: (row, column))
+			let cell = cellForPoint(gridPoint: MatrixPoint(row: row, column: column))
 			cell.position = CGPoint(x: row, y: column)
 			return cell
 		}
@@ -41,13 +41,13 @@ public class World {
 	
 	// MARK: - Positions
 	
-	public func gridPointForPosition(position: CGPoint) -> MatrixIndex {
+	public func gridPointForPosition(position: CGPoint) -> MatrixPoint {
 		let x = Int(position.x)
 		let y = Int(position.y)
-		return (row: x, column: y)
+		return MatrixPoint(row: x, column: y)
 	}
 	
-	public func positionForMatrixIndex(index: MatrixIndex) -> CGPoint {
+	public func positionForMatrixPoint(index: MatrixPoint) -> CGPoint {
 		return CGPoint(x: index.row, y: index.column)
 	}
 	
@@ -103,8 +103,8 @@ public class World {
 	}
 	
 	public func agentsNearPosition(position: CGPoint, within: Int = 1) -> Set<Agent> {
-		let matrixIndex = (Int(position.x), Int(position.y))
-		let filtered = cells[nearPoint: matrixIndex, within: within]
+		let matrixPoint = MatrixPoint(row: Int(position.x), column: Int(position.y))
+		let filtered = cells[nearPoint: matrixPoint, within: within]
 		var agents: [Agent] = []
 		for cell in filtered {
 			let matchingAgents = self.agents.filter { agent in
@@ -137,7 +137,7 @@ public class World {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
 	
-	public func cellsNearPoint(point: MatrixIndex, within: Int = 1) -> Set<Cell> {
+	public func cellsNearPoint(point: MatrixPoint, within: Int = 1) -> Set<Cell> {
 		let filtered = cells[nearPoint: point, within: within]
 		return Set(filtered.elements)
 	}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		863259461CA791EB0066444D /* CardinalityTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863259451CA791EB0066444D /* CardinalityTestCase.swift */; };
 		865536F91CA7260A00060E85 /* SchellingSegregation.h in Headers */ = {isa = PBXBuildFile; fileRef = 865536F81CA7260A00060E85 /* SchellingSegregation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		865537001CA7260A00060E85 /* SchellingSegregation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865536F61CA7260A00060E85 /* SchellingSegregation.framework */; };
 		865537051CA7260A00060E85 /* SchellingSegregationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865537041CA7260A00060E85 /* SchellingSegregationTests.swift */; };
@@ -40,6 +41,7 @@
 		867DDDAA1C94C31E005576A4 /* RangeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DDDA91C94C31E005576A4 /* RangeExtensions.swift */; };
 		867DDDAD1C94C45B005576A4 /* MatrixTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */; };
 		86B01F2B1C9409AF00D1C7A2 /* CanvasViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */; };
+		86DC7CB31CA75F6900875DCE /* MatrixExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC7CB21CA75F6900875DCE /* MatrixExtend.swift */; };
 		86EE437A1CA729A000DE56A2 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655370D1CA7262100060E85 /* Classes.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		863259451CA791EB0066444D /* CardinalityTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardinalityTestCase.swift; sourceTree = "<group>"; };
 		865536F61CA7260A00060E85 /* SchellingSegregation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SchellingSegregation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		865536F81CA7260A00060E85 /* SchellingSegregation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchellingSegregation.h; sourceTree = "<group>"; };
 		865536FA1CA7260A00060E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,8 +103,10 @@
 		865BD47C1C93B1AB00D5392B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		867DDDA91C94C31E005576A4 /* RangeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeExtensions.swift; sourceTree = "<group>"; };
 		867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTestCase.swift; sourceTree = "<group>"; };
+		86A5F3E41CAA4709005A97EF /* MatrixPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MatrixPlayground.playground; sourceTree = "<group>"; };
 		86AF955F1C97E084000BE890 /* SchellingSegregation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SchellingSegregation.playground; path = ../WorldKit/SchellingSegregation.playground; sourceTree = "<group>"; };
 		86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasViewTestCase.swift; sourceTree = "<group>"; };
+		86DC7CB21CA75F6900875DCE /* MatrixExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixExtend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +203,7 @@
 				865BD4361C93AE9100D5392B /* WorldKitTests.swift */,
 				865BD4661C93AEB200D5392B /* CellGridTestCase.swift */,
 				867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */,
+				863259451CA791EB0066444D /* CardinalityTestCase.swift */,
 				865BD4691C93AEB200D5392B /* WorldSceneTestCase.swift */,
 				865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */,
 				865BD46B1C93AEB200D5392B /* WorldTestCase.swift */,
@@ -236,6 +242,8 @@
 			children = (
 				865BD44F1C93AEA600D5392B /* Spatial.swift */,
 				865BD47C1C93B1AB00D5392B /* Matrix.swift */,
+				86DC7CB21CA75F6900875DCE /* MatrixExtend.swift */,
+				86A5F3E41CAA4709005A97EF /* MatrixPlayground.playground */,
 			);
 			name = Units;
 			sourceTree = "<group>";
@@ -481,6 +489,7 @@
 				865BD4561C93AEA600D5392B /* ArrayExtensions.swift in Sources */,
 				865BD4581C93AEA600D5392B /* Cell.swift in Sources */,
 				865BD4571C93AEA600D5392B /* CanvasView.swift in Sources */,
+				86DC7CB31CA75F6900875DCE /* MatrixExtend.swift in Sources */,
 				865BD45B1C93AEA600D5392B /* CGPointExtensions.swift in Sources */,
 				865BD4621C93AEA600D5392B /* World.swift in Sources */,
 				865BD4641C93AEA600D5392B /* WorldSequence.swift in Sources */,
@@ -503,6 +512,7 @@
 				865BD4711C93AEB200D5392B /* WorldSequenceTestCase.swift in Sources */,
 				867DDDAD1C94C45B005576A4 /* MatrixTestCase.swift in Sources */,
 				865BD46D1C93AEB200D5392B /* CellGridTestCase.swift in Sources */,
+				863259461CA791EB0066444D /* CardinalityTestCase.swift in Sources */,
 				865BD4701C93AEB200D5392B /* WorldSceneTestCase.swift in Sources */,
 				86B01F2B1C9409AF00D1C7A2 /* CanvasViewTestCase.swift in Sources */,
 				865BD4721C93AEB200D5392B /* WorldTestCase.swift in Sources */,

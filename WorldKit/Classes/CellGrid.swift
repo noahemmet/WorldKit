@@ -23,7 +23,7 @@ public struct CellGrid {
 extension CellGrid: SequenceType {
 	public func generate() -> AnyGenerator<Cell> {
 		var isFirstElement = true
-		var nextPoint: MatrixIndex = (row: 0, column: 0)
+		var nextPoint = MatrixPoint(row: 0, column: 0)
 		return AnyGenerator<Cell> {
 			if isFirstElement {
 				isFirstElement = false

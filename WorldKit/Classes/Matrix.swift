@@ -8,7 +8,20 @@
 
 import Foundation
 
-public typealias MatrixIndex = (row: Int, column: Int)
+public struct MatrixPoint {
+	public init(row: Int, column: Int) {
+		self.row = row
+		self.column = column
+	}
+	public var row: Int
+	public var column: Int
+}
+
+extension MatrixPoint: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return String(row, column)
+	}
+}
 
 public func ==(lhs: (row: Int, column: Int), rhs: (row: Int, column: Int)) -> Bool {
 	return lhs.column == rhs.column && lhs.row == rhs.row
@@ -45,14 +58,25 @@ public struct Matrix<T: Hashable> {
 	
 	public subscript(row: Int, column: Int) -> Element {
 		get {
-			assert(indexIsValidForRow(row, column: column))
+			assert(pointIsValidForRow(row, column: column))
 			return elements[(row * columns) + column]
 		}
 		
 		set {
-			assert(indexIsValidForRow(row, column: column))
+			assert(pointIsValidForRow(row, column: column))
 			elements[(row * columns) + column] = newValue
 		}
+	}
+	
+	public func elementAt(row row: Int, column: Int) -> Element? {
+		guard pointIsValidForRow(row, column: column) else {
+			return nil
+		}
+		return self[row, column]
+	}
+	
+	public subscript(index: MatrixPoint) -> Element {
+		return self[index.row, index.column]
 	}
 	
 	/**
@@ -82,7 +106,7 @@ public struct Matrix<T: Hashable> {
 	
 	- returns: A trimmed `Matrix`.
 	*/
-	public subscript(nearPoint point: MatrixIndex, within within: Int) -> Matrix<Element> {
+	public subscript(nearPoint point: MatrixPoint, within within: Int) -> Matrix<Element> {
 		let rowRange = (point.row - within) ... (point.row + within)
 		let columnRange = (point.column - within) ... (point.column + within)
 		guard rowRange.startIndex <= rows && columnRange.startIndex <= columns else {
@@ -92,21 +116,51 @@ public struct Matrix<T: Hashable> {
 		return self[rows: rowRange, columns: columnRange]
 	}
 	
-	public subscript(row row: Int) -> [Element] {
-		get {
+	public func columnForRow(row: Int) -> [Element] {
+//		get {
 			assert(row < rows)
 			let startIndex = row * columns
 			let endIndex = row * columns + columns
 			return Array(elements[startIndex..<endIndex])
+//		}
+//		
+//		set {
+//			assert(row < rows)
+//			assert(newValue.count == columns)
+//			let startIndex = row * columns
+//			let endIndex = row * columns + columns
+//			elements.replaceRange(startIndex..<endIndex, with: newValue)
+//		}
+	}
+	
+	public subscript(point point: MatrixPoint, cardinality cardinality: PrincipalCardinalDirection, distance distance: Int) -> MatrixPoint? {
+		var newPoint = point
+		switch cardinality {
+		case .North:
+			newPoint.row -= distance
+		case .NorthEast:
+			newPoint.row -= distance
+			newPoint.column += distance
+		case .East:
+			newPoint.column += distance
+		case .SouthEast:
+			newPoint.row += distance
+			newPoint.column += distance
+		case .South:
+			newPoint.row += distance
+		case .SouthWest:
+			newPoint.row += distance
+			newPoint.column -= distance
+		case .West:
+			newPoint.column -= distance
+		case .NorthWest:
+			newPoint.row -= distance
+			newPoint.column += distance
 		}
-		
-		set {
-			assert(row < rows)
-			assert(newValue.count == columns)
-			let startIndex = row * columns
-			let endIndex = row * columns + columns
-			elements.replaceRange(startIndex..<endIndex, with: newValue)
+		guard pointIsValidForRow(newPoint.row, column: newPoint.column) else {
+			return nil
 		}
+		return newPoint
 	}
 	
 	public subscript(element: Element) -> Int? {
@@ -117,20 +171,20 @@ public struct Matrix<T: Hashable> {
 //		return elements.indexOf(element)
 //	}
 	
-	public func gridPointOfIndex(index: Int) -> MatrixIndex {
-		let row = index / rows
-		let column = index % columns
-		return (row: row, column: column)
+	public func gridPointOfIndex(point: Int) -> MatrixPoint {
+		let row = point / rows
+		let column = point % columns
+		return MatrixPoint(row: row, column: column)
 	}
 	
-	private func indexIsValidForRow(row: Int, column: Int) -> Bool {
+	private func pointIsValidForRow(row: Int, column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
 	
-	public var randomIndex: MatrixIndex {
+	public var randomIndex: MatrixPoint {
 		let x = Int(rand()) % rows
 		let y = rand() % Int32(columns)
-		let index = (x, Int(y))
+		let index = MatrixPoint(row: x, column: Int(y))
 		return index
 	}
 }
@@ -140,7 +194,7 @@ public struct Matrix<T: Hashable> {
 extension Matrix: SequenceType {
 	public func generate() -> AnyGenerator<Element> {
 		var isFirstElement = true
-		var nextPoint: MatrixIndex = (row: 0, column: 0)
+		var nextPoint: MatrixPoint = MatrixPoint(row: 0, column: 0)
 		return AnyGenerator<Element> {
 			if isFirstElement {
 				isFirstElement = false

@@ -95,4 +95,11 @@ class MatrixTestCase: XCTestCase {
 		XCTAssertEqual(rangedMatrix.rows, 0)
 		XCTAssertEqual(rangedMatrix.columns, 0)
 	}
+	
+	func testMatrixSpiral() {
+		let center = MatrixPoint(row: 50, column: 50)
+		let spiralGenerator = matrix.spiral(from: center)
+		let nextPoint = spiralGenerator.next()!
+		XCTAssertEqual(nextPoint, matrix[51, 50])
+	}
 }

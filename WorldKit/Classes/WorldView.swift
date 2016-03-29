@@ -23,7 +23,16 @@ public class WorldView: SKView {
 		self.presentScene(worldScene)
 	}
 	
+	
+	
 	required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented")}
 	
 }
 
+extension WorldView: CustomPlaygroundQuickLookable {
+	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+		let worldView = SKView(frame: NSRect(origin: CGPoint.zero, size: worldScene.size))
+		worldView.presentScene(worldScene)
+		return PlaygroundQuickLook.View(worldView)
+	}
+}
