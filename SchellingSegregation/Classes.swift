@@ -68,7 +68,7 @@ public class Family: Agent {
 	
 	public override func update(world world: World) {
 		let point = (row: Int(position.x), column: Int(position.y))
-		let nearbyHouses = world.cells[nearPoint: (point.row, point.column), within: 1]
+		let nearbyHouses = world.cells[nearPoint: MatrixPoint(row: point.row, column: point.column), within: 1]
 		
 		let otherCount = nearbyHouses.filter { cell in
 			let house = cell as! House
