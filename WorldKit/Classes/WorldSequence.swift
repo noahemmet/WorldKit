@@ -30,7 +30,6 @@ public class WorldSequence: SequenceType {
 	public func generate() -> AnyGenerator<World> {
 		return AnyGenerator<World> {
 			guard self.tick < self.maxTicks && !self.stop else {
-				print("seq end")
 				self.didEnd?(world: self.current)
 				return nil
 			}

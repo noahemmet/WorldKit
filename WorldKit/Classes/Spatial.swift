@@ -79,7 +79,7 @@ public enum CardinalDirection: CasesProtocol {
 	}
 }
 
-public enum PrincipalCardinalDirection: CasesProtocol {
+public enum PrincipalCardinalDirection: Int, CasesProtocol {
 	case North
 	case NorthEast
 	case East

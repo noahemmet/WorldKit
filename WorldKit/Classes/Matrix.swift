@@ -79,6 +79,29 @@ public struct Matrix<T: Hashable> {
 		return self[index.row, index.column]
 	}
 	
+	
+	/// Returns a sliced column
+	public func elementsAt(row row: Int, range: Range<Int>) -> [Element] {
+		var columns: [Element] = []
+		for columnIndex in range {
+			if let element = self.elementAt(row: row, column: columnIndex) {
+				columns.append(element)
+			}
+		}
+		return columns
+	}
+	
+	/// Returns a sliced row
+	public func elementsAt(column column: Int, range: Range<Int>) -> [Element] {
+		var rows: [Element] = []
+		for rowIndex in range {
+			if let element = self.elementAt(row: rowIndex, column: column) {
+				rows.append(element)
+			}
+		}
+		return rows
+	}
+	
 	/**
 	Filter by ranges of columns and rows. 
 	
@@ -186,6 +209,63 @@ public struct Matrix<T: Hashable> {
 		let y = rand() % Int32(columns)
 		let index = MatrixPoint(row: x, column: Int(y))
 		return index
+	}
+	
+	public func ringsAround(point centerPoint: MatrixPoint, range: Range<Int> = 1..<2, clockwise: Bool = true) -> [[Element]] {
+		var rings: [[Element]] = []
+		for ringIndex in range {
+			
+			// Corners
+			let topLeft = MatrixPoint(row: centerPoint.row - ringIndex, column: centerPoint.column + ringIndex)
+			let topRight = MatrixPoint(row: centerPoint.row + ringIndex, column: centerPoint.column + ringIndex)
+			let bottomRight = MatrixPoint(row: centerPoint.row + ringIndex, column: centerPoint.column - ringIndex)
+			let bottomLeft = MatrixPoint(row: centerPoint.row - ringIndex, column: centerPoint.column - ringIndex)
+			
+			// Edges
+			let offset = 1 // ? I think this allows space between the edges.
+			let topRow: [Element] = elementsAt(column: topLeft.column, range: topLeft.row+offset..<bottomRight.row+offset)
+			let rightColumn: [Element] = elementsAt(row: bottomRight.row, range: bottomRight.column..<topRight.column)
+			let bottomRow: [Element] = elementsAt(column: bottomLeft.column, range: bottomLeft.row..<bottomRight.row)
+			let leftColumn: [Element] = elementsAt(row: bottomLeft.row, range: bottomLeft.column+offset..<topLeft.column+offset)
+			
+			let ring: [Element]
+			if clockwise {
+				ring = topRow + rightColumn.reverse() + bottomRow.reverse() + leftColumn
+			} else {
+				ring = topRow.reverse() + leftColumn + bottomRow + rightColumn.reverse()
+			}
+			rings.append(ring)
+		}
+		return rings
+	}
+	
+	public func spiral(from centerPoint: MatrixPoint, start cardinality: PrincipalCardinalDirection = .NorthWest, clockwise: Bool = true) -> AnyGenerator<Element> {
+		
+		var ringIndex = 1
+		var elementIndex = 0
+		var nextRing = ringsAround(point: centerPoint, clockwise: clockwise).first!
+		let cardinalityOffset = PrincipalCardinalDirection.cases.count % cardinality.rawValue
+		return AnyGenerator<Element> { 
+			if elementIndex < nextRing.count {
+				// Traverse each ring
+				let element = nextRing[elementIndex]
+				elementIndex += 1
+				return element
+			} else {
+				// end of ring
+				ringIndex += 1
+				elementIndex = 0
+				let nextRange = ringIndex..<ringIndex+1
+				if let possibleNextRing = self.ringsAround(point: centerPoint, range: nextRange, clockwise: clockwise).first where !possibleNextRing.isEmpty {
+					nextRing = possibleNextRing
+					let element = nextRing[0]
+					return element
+				} else {
+					// All elements are out of bounds.
+					return nil
+				}
+			}
+		}
 	}
 }
 
