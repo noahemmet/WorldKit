@@ -16,8 +16,9 @@ class SchellingSegregationTests: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()
+		
 		let density = 80
-		initialWorld = World(rows: 20, columns: 20, cellType: House.self)
+		initialWorld = World(rows: 100, columns: 100, cellType: House.self)
 		worldSequence = WorldSequence(initial: initialWorld, maxTicks: 200)
 		
 		for cell in worldSequence.current.cells {
@@ -44,27 +45,27 @@ class SchellingSegregationTests: XCTestCase {
 		}
 	}
 	
-	func testScene() {
-		let expectation = self.expectationWithDescription("scene")
-		self.waitForExpectationsWithTimeout(1, handler: nil)
-		worldSequence.didEnd = { world in
-			print("did end")
-			expectation.fulfill()
-		}
-		worldSequence.updater = { world in 
-			print("update")
-		}
-		let view = WorldView(worldSequence: self.worldSequence)
-		print("view: ", view.worldScene.size)
-		view.scene?.paused = false
-		print(view.worldScene.worldSequence)
-		XCTAssertTrue(worldSequence === view.worldScene.worldSequence)
-		XCTAssertNotNil(view.worldScene.worldSequence.updater)
-		//		self.measureBlock {
-		
-		
-		//		}
-	}
+//	func testScene() {
+//		let expectation = self.expectationWithDescription("scene")
+//		self.waitForExpectationsWithTimeout(1, handler: nil)
+//		worldSequence.didEnd = { world in
+//			print("did end")
+//			expectation.fulfill()
+//		}
+//		worldSequence.updater = { world in 
+//			print("update")
+//		}
+//		let view = WorldView(worldSequence: self.worldSequence)
+//		print("view: ", view.worldScene.size)
+//		view.scene?.paused = false
+//		print(view.worldScene.worldSequence)
+//		XCTAssertTrue(worldSequence === view.worldScene.worldSequence)
+//		XCTAssertNotNil(view.worldScene.worldSequence.updater)
+//		//		self.measureBlock {
+//		
+//		
+//		//		}
+//	}
 	
 	func testFindNewSpot() {
 		self.measureBlock {

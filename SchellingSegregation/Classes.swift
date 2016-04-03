@@ -21,7 +21,7 @@ public func setup(world world: World, density: Int) {
 			world.addAgent(family)
 		}
 	}
-
+	
 }
 
 public enum FamilyType {
@@ -49,20 +49,17 @@ public class Family: Agent {
 	}
 	
 	public func findNewSpot(world world: World) {
-		
 		let originalHouse = world.cells[Int(position.x), Int(position.y)] as! House
-		var newHouse = originalHouse
-		let tries = 100
-		for _ in 0..<tries {
-			let randomIndex = world.cells.randomIndex
-			let newPosition = world.positionForMatrixPoint(randomIndex)
-			newHouse = world.cells[Int(newPosition.x), Int(newPosition.y)] as! House
-			if newHouse.occupant == nil {
+		var tries = 0
+		for cell in world.cells.spiral(from: MatrixPoint(row: Int(position.x), column: Int(position.y))) {
+			let house = cell as! House
+			if house.occupant == nil {
 				originalHouse.occupant = nil
-				newHouse.occupant = self
-				position = newHouse.position
+				house.occupant = self
+				position = house.position
 				break
 			}
+			tries += 1
 		}
 	}
 	
@@ -77,25 +74,47 @@ public class Family: Agent {
 			}.count
 		
 		disimilarityPercent = Float(otherCount) / Float(nearbyHouses.elements.count)
-//		print("dis %: ", disimilarityPercent)
+		//		print("dis %: ", disimilarityPercent)
 		self.isHappy = disimilarityPercent <= tolerance
 		
 		if !self.isHappy {
 			findNewSpot(world: world)
 		}
 	}
-//	let totalDisimilarityPercent = totalDisimilarity / Float(world.agents.count)
-//	XCPlaygroundPage.currentPage.captureValue(totalDisimilarityPercent * 1, withIdentifier: "disimilarityPercent")
-//	let totalHappy = world.agents.filter { ($0 as! Family).isHappy }.count
-//	let percentHappy = Float(totalHappy) / Float(world.agents.count)
-//	XCPlaygroundPage.currentPage.captureValue(percentHappy * 1, withIdentifier: "percentHappy")
-//	
-//	if allAreHappy {
-//	print("tolerance: \(tolerance)")
-//	print("final similarity: \(1 - totalDisimilarityPercent)")
-//	worldSequence.stop = true
-//	}
+	
+	
+	//	let totalDisimilarityPercent = totalDisimilarity / Float(world.agents.count)
+	//	XCPlaygroundPage.currentPage.captureValue(totalDisimilarityPercent * 1, withIdentifier: "disimilarityPercent")
+	//	let totalHappy = world.agents.filter { ($0 as! Family).isHappy }.count
+	//	let percentHappy = Float(totalHappy) / Float(world.agents.count)
+	//	XCPlaygroundPage.currentPage.captureValue(percentHappy * 1, withIdentifier: "percentHappy")
+	//	
+	//	if allAreHappy {
+	//	print("tolerance: \(tolerance)")
+	//	print("final similarity: \(1 - totalDisimilarityPercent)")
+	//	worldSequence.stop = true
+	//	}
 	
 	
 }
 
+extension World {
+	public func percentHappy() -> Float {
+		var totalDisimilarity: Float = 0
+		var allAreHappy = true
+		var numHappy = 0
+		for family in agents as! Set<Family> {
+			if !family.isHappy {
+				allAreHappy = false
+			} else {
+				numHappy += 1
+			}
+			totalDisimilarity += family.disimilarityPercent
+		}
+		let totalDisimilarityPercent = totalDisimilarity / Float(agents.count)
+		//			XCPlaygroundPage.currentPage.captureValue(totalDisimilarityPercent * 1, withIdentifier: "disimilarityPercent")
+		let percentHappy = Float(numHappy) / Float(agents.count)
+		//			XCPlaygroundPage.currentPage.captureValue(percentHappy * 1, withIdentifier: "percentHappy")
+		return percentHappy
+	}
+}

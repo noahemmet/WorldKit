@@ -1,16 +1,17 @@
 //: Playground - noun: a place where people can play
 
-import WorldKit
+import WorldKit
+import XCPlayground
 import SchellingSegregation
 
-tolerance = 0.3
-let density = 75
+tolerance = 0.4
+let density = 85
 
 //var percentSimilar = 100.0
 //var percentHappy = 100.0
 WorldScene.minimumTimePerUpdate = 0.0
 
-let initialWorld = World(rows: 30, columns: 30, cellType: House.self)
+let initialWorld = World(rows: 50, columns: 50, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
@@ -20,7 +21,12 @@ XCPlaygroundPage.currentPage.liveView = worldView
 setup(world: worldSequence.current, density: density)
 
 worldSequence.updater = { world in
-	print("tick")
+	let happy = world.percentHappy()
+	print(happy)
+	if happy >= 100 {
+		print("happy")
+		worldSequence.stop = true
+	}
 //	var totalDisimilarity: Float = 0
 //	var allAreHappy = true
 //	var numHappy = 0
