@@ -80,9 +80,14 @@ public class WorldScene: SKScene {
 		
 		if diffSeconds > WorldScene.minimumTimePerUpdate {
 			previousUpdate = currentTime
-			if let next = generator.next() {
-				configureWorld(next)
-			}
+			var next: World?
+			async({ 
+				next = self.generator.next()
+			}, {
+				if let next = next {
+					self.configureWorld(next)
+				}
+			})
 		}
 	}
 	
@@ -105,7 +110,7 @@ public class WorldScene: SKScene {
 		agentSprite.color = agent.color
 		let newPosition = positionForGridPosition(agent.position)
 		
-		if duration > 0 && worldSequence.tick > 1 {
+		if duration > 0 && worldSequence.tick > 1 && false {
 			agentSprite.removeActionForKey("move")
 			let moveTo = SKAction.moveTo(newPosition, duration: duration)
 			moveTo.duration = duration

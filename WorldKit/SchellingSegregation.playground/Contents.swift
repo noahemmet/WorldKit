@@ -4,12 +4,12 @@ import WorldKit
 import XCPlayground
 import SchellingSegregation
 
-tolerance = 0.4
+tolerance = 0.5
 let density = 85
 
 //var percentSimilar = 100.0
 //var percentHappy = 100.0
-WorldScene.minimumTimePerUpdate = 0.0
+WorldScene.minimumTimePerUpdate = 0.1
 
 let initialWorld = World(rows: 50, columns: 50, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
@@ -23,10 +23,11 @@ setup(world: worldSequence.current, density: density)
 worldSequence.updater = { world in
 	let happy = world.percentHappy()
 	print(happy)
-	if happy >= 100 {
+	if happy >= 1.0 {
 		print("happy")
 		worldSequence.stop = true
 	}
+}
 //	var totalDisimilarity: Float = 0
 //	var allAreHappy = true
 //	var numHappy = 0
@@ -48,4 +49,4 @@ worldSequence.updater = { world in
 //		print("final similarity: \(1 - totalDisimilarityPercent)")
 //		worldSequence.stop = true
 //	}
-}
+//}
