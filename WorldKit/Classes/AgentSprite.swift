@@ -14,7 +14,7 @@ public class AgentSprite: SKSpriteNode {
 	public init(agent: Agent, size: CGSize) {
 		self.uuid = agent.uuid
 		super.init(texture: nil, color: agent.color, size: size)
-	}
+	} 
 	
 	required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }

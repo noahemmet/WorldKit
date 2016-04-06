@@ -70,3 +70,18 @@ public protocol PositionTrait {
 public protocol NameTrait {
 	var name: String { get set }
 }
+
+
+extension Agent: CustomPlaygroundQuickLookable {
+	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+		let view = NSView(frame: NSRect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
+		view.wantsLayer = true
+		view.layer?.backgroundColor = color.CGColor
+		return PlaygroundQuickLook.View(view)
+//		let sprite = AgentSprite(agent: self, size: CGSize(width: 20, height: 20))
+//		sprite.color = color
+//		print(sprite)
+//		print(sprite.frame)
+//		return PlaygroundQuickLook.Sprite(sprite)
+	}
+}

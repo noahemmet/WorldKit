@@ -47,5 +47,9 @@ for cell in world.cells.spiral(from: MatrixPoint(row: 4, column: 4), clockwise: 
 	cell.color = NSColor(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
 	hue += colorIncrement
 	saturation -= colorIncrement
+	cell
 }
+let cell = world.cells.elements.first!
+cell
+worldSequence.generate().next()
 world

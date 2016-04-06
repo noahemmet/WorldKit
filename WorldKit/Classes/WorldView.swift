@@ -31,8 +31,8 @@ public class WorldView: SKView {
 
 extension WorldView: CustomPlaygroundQuickLookable {
 	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let worldView = SKView(frame: NSRect(origin: CGPoint.zero, size: worldScene.size))
-		worldView.presentScene(worldScene)
-		return PlaygroundQuickLook.View(worldView)
+		let texture = self.textureFromNode(worldScene)!
+		let image = NSImage(CGImage: texture.CGImage(), size: worldScene.size)
+		return PlaygroundQuickLook.Image(image)
 	}
 }

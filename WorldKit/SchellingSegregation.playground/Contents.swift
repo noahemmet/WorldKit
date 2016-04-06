@@ -15,7 +15,6 @@ let initialWorld = World(rows: 50, columns: 50, cellType: House.self)
 let worldSequence = WorldSequence(initial: initialWorld)
 let worldView = WorldView(worldSequence: worldSequence)
 
-XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 XCPlaygroundPage.currentPage.liveView = worldView
 
 setup(world: worldSequence.current, density: density)
