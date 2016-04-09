@@ -152,13 +152,7 @@ public class World {
 extension World: CustomPlaygroundQuickLookable {
 	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
 		let sequence = WorldSequence(initial: self)
-		let worldScene = WorldScene(size: CGSize(width: 100, height: 100), worldSequence: sequence)
 		let worldView = WorldView(worldSequence: sequence)
-//		let texture = worldView.textureFromNode(worldScene)!
-//		let image = NSImage(CGImage: texture.CGImage(), size: worldScene.size)
-//		return PlaygroundQuickLook.Image(image)
-
-//		let view = WorldView(worldSequence: sequence)
 		return PlaygroundQuickLook.View(worldView)
 	}
 }
