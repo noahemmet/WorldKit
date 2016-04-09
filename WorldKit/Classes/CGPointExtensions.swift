@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public extension CGPoint {
 	func distanceToPoint(point: CGPoint) -> CGFloat {

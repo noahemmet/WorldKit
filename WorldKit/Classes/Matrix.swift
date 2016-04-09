@@ -244,7 +244,7 @@ public struct Matrix<T: Hashable> {
 		var ringIndex = 1
 		var elementIndex = 0
 		var nextRing = ringsAround(point: centerPoint, clockwise: clockwise).first!
-		let cardinalityOffset = PrincipalCardinalDirection.cases.count % cardinality.rawValue
+		let _ = PrincipalCardinalDirection.cases.count % cardinality.rawValue
 		return AnyGenerator<Element> { 
 			if elementIndex < nextRing.count {
 				// Traverse each ring

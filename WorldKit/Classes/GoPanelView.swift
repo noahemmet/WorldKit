@@ -6,8 +6,8 @@
 //  Copyright © 2016 Sticks. All rights reserved.
 //
 
-import Cocoa
-
-class GoPanelView: NSView {
-    
-}
+//import Cocoa
+//
+//class GoPanelView: NSView {
+//    
+//}

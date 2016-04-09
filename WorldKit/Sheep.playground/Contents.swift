@@ -14,7 +14,7 @@ let worldView = WorldView(worldSequence: worldSequence)
 XCPlaygroundPage.currentPage.liveView = worldView
 
 class Sheep: Agent {
-	//	var color = NSColor.whiteColor()
+	//	var color = Color.whiteColor()
 	var energy: Float = 100
 	func eatGrass(grass: Grass) -> Bool {
 		if grass.beEaten() {

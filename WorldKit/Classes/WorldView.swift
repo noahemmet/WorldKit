@@ -15,7 +15,7 @@ public class WorldView: SKView {
 	
 	public init(worldSequence: WorldSequence) {
 		worldScene = WorldScene(size: WorldView.defaultSize, worldSequence: worldSequence)
-		super.init(frame: NSRect(origin: CGPoint.zero, size: worldScene.size))
+		super.init(frame: Rect(origin: CGPoint.zero, size: worldScene.size))
 		
 		self.widthAnchor.constraintEqualToConstant(frame.size.width).active = true
 		self.heightAnchor.constraintEqualToConstant(frame.size.height).active = true
@@ -29,10 +29,10 @@ public class WorldView: SKView {
 	
 }
 
-extension WorldView: CustomPlaygroundQuickLookable {
-	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let texture = self.textureFromNode(worldScene)!
-		let image = NSImage(CGImage: texture.CGImage(), size: worldScene.size)
-		return PlaygroundQuickLook.Image(image)
-	}
-}
+//extension WorldView: CustomPlaygroundQuickLookable {
+//	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+//		let texture = self.textureFromNode(worldScene)!
+//		let image = Image(CGImage: texture.CGImage(), size: worldScene.size)
+//		return PlaygroundQuickLook.Image(image)
+//	}
+//}

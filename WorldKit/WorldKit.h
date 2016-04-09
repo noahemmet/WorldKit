@@ -6,7 +6,8 @@
 //  Copyright © 2016 Sticks. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 //! Project version number for WorldKit.
 FOUNDATION_EXPORT double WorldKitVersionNumber;

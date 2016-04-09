@@ -17,7 +17,7 @@ public class Agent: PositionTrait {
 	public var name: String = ""
 	public var position: CGPoint = CGPoint(x: 0, y: 0)
 	public var heading: Degree = 0
-	public var color: NSColor = .whiteColor()
+	public var color: Color = Color.whiteColor()
 	public required  init() {
 		uuid = uuidCounter
 		uuidCounter += 1
@@ -60,7 +60,6 @@ public func ==(lhs: Agent, rhs: Agent) -> Bool {
 	return lhs.uuid == rhs.uuid
 }
 
-
 // MARK: Traits
 
 public protocol PositionTrait {
@@ -72,16 +71,16 @@ public protocol NameTrait {
 }
 
 
-extension Agent: CustomPlaygroundQuickLookable {
-	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let view = NSView(frame: NSRect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
-		view.wantsLayer = true
-		view.layer?.backgroundColor = color.CGColor
-		return PlaygroundQuickLook.View(view)
-//		let sprite = AgentSprite(agent: self, size: CGSize(width: 20, height: 20))
-//		sprite.color = color
-//		print(sprite)
-//		print(sprite.frame)
-//		return PlaygroundQuickLook.Sprite(sprite)
-	}
-}
+//extension Agent: CustomPlaygroundQuickLookable {
+//	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+//		let view = NSView(frame: Rect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
+//		view.wantsLayer = true
+//		view.layer?.backgroundColor = color.CGColor
+//		return PlaygroundQuickLook.View(view)
+////		let sprite = AgentSprite(agent: self, size: CGSize(width: 20, height: 20))
+////		sprite.color = color
+////		print(sprite)
+////		print(sprite.frame)
+////		return PlaygroundQuickLook.Sprite(sprite)
+//	}
+//}
