@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 #if os(iOS)
-	import CocoaTouch
+	import UIKit
 	public typealias View = UIView
 	public typealias Color = UIColor
 	public typealias Rect = CGRect
