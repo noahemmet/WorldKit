@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class GoPanelView: NSView {
+class GoPanelView: View {
     
 }

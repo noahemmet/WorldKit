@@ -8,21 +8,21 @@
 
 import Foundation
 
-public class CanvasView: NSView {
+public class CanvasView: View {
 	internal let stackView: NSStackView
 	internal let worldView: WorldView
 	internal let settingsView: SettingsView
 	
 	public init(worldView: WorldView) {
 		self.worldView = worldView
-		self.settingsView = SettingsView(frame: NSRect(x: 0, y: 0, width: worldView.frame.size.width, height: 100))
+		self.settingsView = SettingsView(frame: Rect(x: 0, y: 0, width: worldView.frame.size.width, height: 100))
 		
 		stackView = NSStackView(views: [worldView, self.settingsView])
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 //		stackView.alignment = .Leading
 //		stackView.distribution = .Fill
 		stackView.orientation = .Vertical
-		super.init(frame: NSRect(x: 0, y: 0, width: 480, height: 580))
+		super.init(frame: Rect(x: 0, y: 0, width: 480, height: 580))
 		
 		self.settingsView.delegate = self
 		

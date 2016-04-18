@@ -17,7 +17,7 @@ public class Agent: PositionTrait {
 	public var name: String = ""
 	public var position: CGPoint = CGPoint(x: 0, y: 0)
 	public var heading: Degree = 0
-	public var color: NSColor = .whiteColor()
+	public var color: Color = .whiteColor()
 	public required  init() {
 		uuid = uuidCounter
 		uuidCounter += 1
@@ -74,7 +74,7 @@ public protocol NameTrait {
 
 extension Agent: CustomPlaygroundQuickLookable {
 	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let view = NSView(frame: NSRect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
+		let view = View(frame: Rect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
 		view.wantsLayer = true
 		view.layer?.backgroundColor = color.CGColor
 		return PlaygroundQuickLook.View(view)

@@ -12,13 +12,13 @@ protocol SettingsViewDelegate: class {
 	func settingsView(settingsView: SettingsView, didSelectSetting setting: String)
 }
 
-public class SettingsView: NSView {
+public class SettingsView: View {
 	internal weak var delegate: SettingsViewDelegate?
 	
 	private let scrollView: NSScrollView
 	public let collectionView: NSCollectionView
 	internal var settingTitles: [String] = []
-	public override init(frame frameRect: NSRect) {
+	public override init(frame frameRect: Rect) {
 		scrollView = NSScrollView(frame: frameRect)
 //		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView = NSCollectionView(frame: frameRect)
@@ -65,7 +65,7 @@ extension SettingsView: NSCollectionViewDelegate, NSCollectionViewDataSource {
 	public func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
 		let cell = collectionView.makeItemWithIdentifier(String(Cell), forIndexPath: indexPath)
 		cell.view.wantsLayer = true
-		cell.view.layer?.backgroundColor = NSColor.redColor().CGColor
+		cell.view.layer?.backgroundColor = Color.redColor().CGColor
 		return cell
 	}
 	
@@ -88,6 +88,6 @@ public class SettingCell: NSCollectionViewItem {
 	}
 	
 	public override func loadView() {
-		self.view = NSView(frame: NSRect(x: 0, y: 0, width: 10, height: 10))
+		self.view = View(frame: Rect(x: 0, y: 0, width: 10, height: 10))
 	}
 }

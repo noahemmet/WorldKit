@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		861DA5351CC2D90700EC7455 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861DA5341CC2D90700EC7455 /* Platform.swift */; };
 		863259461CA791EB0066444D /* CardinalityTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863259451CA791EB0066444D /* CardinalityTestCase.swift */; };
 		865536F91CA7260A00060E85 /* SchellingSegregation.h in Headers */ = {isa = PBXBuildFile; fileRef = 865536F81CA7260A00060E85 /* SchellingSegregation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		865537001CA7260A00060E85 /* SchellingSegregation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865536F61CA7260A00060E85 /* SchellingSegregation.framework */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		861DA5341CC2D90700EC7455 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		863259451CA791EB0066444D /* CardinalityTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardinalityTestCase.swift; sourceTree = "<group>"; };
 		865536F61CA7260A00060E85 /* SchellingSegregation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SchellingSegregation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		865536F81CA7260A00060E85 /* SchellingSegregation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchellingSegregation.h; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				865BD4751C93AF2400D5392B /* Sheep.playground */,
 				865BD42A1C93AE9000D5392B /* WorldKit.h */,
 				865BD42C1C93AE9000D5392B /* Info.plist */,
+				861DA5341CC2D90700EC7455 /* Platform.swift */,
 			);
 			path = WorldKit;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				861DA5351CC2D90700EC7455 /* Platform.swift in Sources */,
 				86A1522E1CB192380028B3EB /* Threading.swift in Sources */,
 				865BD4551C93AEA600D5392B /* AgentSprite.swift in Sources */,
 				865BD4631C93AEA600D5392B /* WorldScene.swift in Sources */,

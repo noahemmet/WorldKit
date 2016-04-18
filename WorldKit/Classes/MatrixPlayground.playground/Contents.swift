@@ -33,7 +33,7 @@ XCPlaygroundPage.currentPage.liveView = worldView
 //let colorIncrement: CGFloat = 0.05
 //for (r, ring) in rings.enumerate() {
 //	for (i, cell) in ring.enumerate() {
-//		cell.color = NSColor(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
+//		cell.color = Color(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
 //	}
 //	hue += colorIncrement
 //	saturation -= colorIncrement
@@ -44,7 +44,7 @@ var hue: CGFloat = 0.5
 var saturation: CGFloat = 0.8
 let colorIncrement: CGFloat = 0.01
 for cell in world.cells.spiral(from: MatrixPoint(row: 4, column: 4), clockwise: true) {
-	cell.color = NSColor(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
+	cell.color = Color(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
 	hue += colorIncrement
 	saturation -= colorIncrement
 	cell

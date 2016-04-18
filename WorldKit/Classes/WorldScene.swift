@@ -36,7 +36,7 @@ public class WorldScene: SKScene {
 		cellSprites = Matrix<CellSprite>(rows: initialWorld.cells.rows, columns: initialWorld.cells.columns) { (row, column) in
 			let cell = initialWorld.cells[row, column]
 			let flipColor = (row % 2 + column % 2) % 2 == 0 
-			cell.color = NSColor(white: flipColor ? 0.2 : 0.3, alpha: 1)
+			cell.color = Color(white: flipColor ? 0.2 : 0.3, alpha: 1)
 			let cellSprite = CellSprite(agent: cell, size: self.cellSize)
 			self.configureAgentSprite(cellSprite, forAgent: cell, duration: 0)
 			self.addChild(cellSprite)
