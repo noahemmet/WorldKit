@@ -149,10 +149,10 @@ public class World {
 	}
 }
 
-extension World: CustomPlaygroundQuickLookable {
-	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let sequence = WorldSequence(initial: self)
-		let worldView = WorldView(worldSequence: sequence)
-		return PlaygroundQuickLook.View(worldView)
-	}
-}
+//extension World: CustomPlaygroundQuickLookable {
+//	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+//		let sequence = WorldSequence(initial: self)
+//		let worldView = WorldView(worldSequence: sequence)
+//		return PlaygroundQuickLook.View(worldView)
+//	}
+//}

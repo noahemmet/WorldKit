@@ -29,10 +29,10 @@ public class WorldView: SKView {
 	
 }
 
-extension WorldView: CustomPlaygroundQuickLookable {
-	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
-		let texture = self.textureFromNode(worldScene)!
-		let image = Image(CGImage: texture.CGImage(), size: worldScene.size)
-		return PlaygroundQuickLook.Image(image)
-	}
-}
+//extension WorldView: CustomPlaygroundQuickLookable {
+//	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
+//		let texture = self.textureFromNode(worldScene)!
+//		let image = Image(CGImage: texture.CGImage(), size: worldScene.size)
+//		return PlaygroundQuickLook.Image(image)
+//	}
+//}

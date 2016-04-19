@@ -12,7 +12,7 @@ o o o o o
 o o o o o
 */
 
-let world = World(rows: 9, columns: 9)
+let world = World(rows: 25, columns: 25)
 let worldSequence = WorldSequence(initial: world)
 let worldView = WorldView(worldSequence: worldSequence)
 XCPlaygroundPage.currentPage.liveView = worldView
@@ -43,13 +43,13 @@ XCPlaygroundPage.currentPage.liveView = worldView
 var hue: CGFloat = 0.5
 var saturation: CGFloat = 0.8
 let colorIncrement: CGFloat = 0.01
-for cell in world.cells.spiral(from: MatrixPoint(row: 4, column: 4), clockwise: true) {
+for cell in world.cells.spiral(from: world.cells.center, clockwise: true) {
 	cell.color = Color(hue: hue, saturation: saturation, brightness: 0.8, alpha: 1.0)
 	hue += colorIncrement
 	saturation -= colorIncrement
 	cell
 }
-let cell = world.cells.elements.first!
+let cell = world.cells.elements[10]
 cell
 worldSequence.generate().next()
-world
+worldView

@@ -211,6 +211,10 @@ public struct Matrix<T: Hashable> {
 		return index
 	}
 	
+	public var center: MatrixPoint {
+		return self[Int(rows/2), Int(columns/2)]
+	}
+	
 	public func ringsAround(point centerPoint: MatrixPoint, range: Range<Int> = 1..<2, clockwise: Bool = true) -> [[Element]] {
 		var rings: [[Element]] = []
 		for ringIndex in range {
@@ -244,7 +248,7 @@ public struct Matrix<T: Hashable> {
 		var ringIndex = 1
 		var elementIndex = 0
 		var nextRing = ringsAround(point: centerPoint, clockwise: clockwise).first!
-		let cardinalityOffset = PrincipalCardinalDirection.cases.count % cardinality.rawValue
+		let _ = PrincipalCardinalDirection.cases.count % cardinality.rawValue
 		return AnyGenerator<Element> { 
 			if elementIndex < nextRing.count {
 				// Traverse each ring
