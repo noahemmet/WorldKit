@@ -17,13 +17,13 @@ public class Agent: PositionTrait {
 	public var name: String = ""
 	public var position: CGPoint = CGPoint(x: 0, y: 0)
 	public var heading: Degree = 0
-	public var color: Color = .whiteColor()
+	public var color: Color = .white()
 	public required  init() {
 		uuid = uuidCounter
 		uuidCounter += 1
 	}
 	
-	public func update(world world: World) {
+	public func update(world: World) {
 		
 	}
 }

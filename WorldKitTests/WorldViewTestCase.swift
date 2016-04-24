@@ -1,26 +1,26 @@
+////
+////  WorldViewTestCase.swift
+////  WorldKit
+////
+////  Created by Noah Emmet on 2/18/16.
+////  Copyright © 2016 Sticks. All rights reserved.
+////
 //
-//  WorldViewTestCase.swift
-//  WorldKit
+//import XCTest
+//import WorldKit
 //
-//  Created by Noah Emmet on 2/18/16.
-//  Copyright © 2016 Sticks. All rights reserved.
+//class WorldViewTestCase: XCTestCase {
 //
-
-import XCTest
-import WorldKit
-
-class WorldViewTestCase: XCTestCase {
-
-    func testInit() {
-		let firstWorld = World(rows: 10, columns: 20) { gridPoint in
-			return Cell()
-		}
-		let worldSequence = WorldSequence(initial: firstWorld)
-		let _ = WorldView(worldSequence: worldSequence)
-    }
-	
-	func testInit2() {
-		let _ = World(rows: 10, columns: 20, cellType: Cell.self)
-	}
-
-}
+//    func testInit() {
+//		let firstWorld = World(rows: 10, columns: 20) { gridPoint in
+//			return Cell()
+//		}
+//		let worldSequence = WorldSequence(initial: firstWorld)
+//		let _ = WorldView(worldSequence: worldSequence)
+//    }
+//	
+//	func testInit2() {
+//		let _ = World(rows: 10, columns: 20, cellType: Cell.self)
+//	}
+//
+//}

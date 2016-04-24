@@ -11,7 +11,7 @@ import Foundation
 public extension Set { 
 	func randomElement() -> Element? { 
 		let n = Int(arc4random_uniform(UInt32(count)))
-		let i = startIndex.advancedBy(n)
+		let i = startIndex.advanced(by: n)
 		return n < self.count ? self[i] : nil
 	}
 }

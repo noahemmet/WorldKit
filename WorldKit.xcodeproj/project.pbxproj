@@ -7,53 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		861DA5351CC2D90700EC7455 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861DA5341CC2D90700EC7455 /* Platform.swift */; };
 		863259461CA791EB0066444D /* CardinalityTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863259451CA791EB0066444D /* CardinalityTestCase.swift */; };
-		865536F91CA7260A00060E85 /* SchellingSegregation.h in Headers */ = {isa = PBXBuildFile; fileRef = 865536F81CA7260A00060E85 /* SchellingSegregation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		865537001CA7260A00060E85 /* SchellingSegregation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865536F61CA7260A00060E85 /* SchellingSegregation.framework */; };
-		865537051CA7260A00060E85 /* SchellingSegregationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865537041CA7260A00060E85 /* SchellingSegregationTests.swift */; };
-		8655370E1CA7262100060E85 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655370D1CA7262100060E85 /* Classes.swift */; };
-		865BD42B1C93AE9000D5392B /* WorldKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 865BD42A1C93AE9000D5392B /* WorldKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		865BD4321C93AE9100D5392B /* WorldKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865BD4271C93AE9000D5392B /* WorldKit.framework */; };
 		865BD4371C93AE9100D5392B /* WorldKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4361C93AE9100D5392B /* WorldKitTests.swift */; };
-		865BD4541C93AEA600D5392B /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4421C93AEA600D5392B /* Agent.swift */; };
-		865BD4551C93AEA600D5392B /* AgentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4431C93AEA600D5392B /* AgentSprite.swift */; };
-		865BD4561C93AEA600D5392B /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4441C93AEA600D5392B /* ArrayExtensions.swift */; };
-		865BD4571C93AEA600D5392B /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4451C93AEA600D5392B /* CanvasView.swift */; };
-		865BD4581C93AEA600D5392B /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4461C93AEA600D5392B /* Cell.swift */; };
-		865BD4591C93AEA600D5392B /* CellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4471C93AEA600D5392B /* CellGrid.swift */; };
-		865BD45A1C93AEA600D5392B /* CellSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4481C93AEA600D5392B /* CellSprite.swift */; };
-		865BD45B1C93AEA600D5392B /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4491C93AEA600D5392B /* CGPointExtensions.swift */; };
-		865BD45C1C93AEA600D5392B /* GoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD44A1C93AEA600D5392B /* GoPanelView.swift */; };
-		865BD45E1C93AEA600D5392B /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD44C1C93AEA600D5392B /* Parameters.swift */; };
-		865BD45F1C93AEA600D5392B /* SetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD44D1C93AEA600D5392B /* SetExtensions.swift */; };
-		865BD4601C93AEA600D5392B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD44E1C93AEA600D5392B /* SettingsView.swift */; };
-		865BD4611C93AEA600D5392B /* Spatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD44F1C93AEA600D5392B /* Spatial.swift */; };
-		865BD4621C93AEA600D5392B /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4501C93AEA600D5392B /* World.swift */; };
-		865BD4631C93AEA600D5392B /* WorldScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4511C93AEA600D5392B /* WorldScene.swift */; };
-		865BD4641C93AEA600D5392B /* WorldSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4521C93AEA600D5392B /* WorldSequence.swift */; };
-		865BD4651C93AEA600D5392B /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4531C93AEA600D5392B /* WorldView.swift */; };
 		865BD46D1C93AEB200D5392B /* CellGridTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4661C93AEB200D5392B /* CellGridTestCase.swift */; };
 		865BD4701C93AEB200D5392B /* WorldSceneTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD4691C93AEB200D5392B /* WorldSceneTestCase.swift */; };
 		865BD4711C93AEB200D5392B /* WorldSequenceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */; };
 		865BD4721C93AEB200D5392B /* WorldTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46B1C93AEB200D5392B /* WorldTestCase.swift */; };
 		865BD4731C93AEB200D5392B /* WorldViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */; };
-		865BD47D1C93B1AB00D5392B /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD47C1C93B1AB00D5392B /* Matrix.swift */; };
-		867DDDAA1C94C31E005576A4 /* RangeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DDDA91C94C31E005576A4 /* RangeExtensions.swift */; };
-		867DDDAD1C94C45B005576A4 /* MatrixTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */; };
-		86A1522E1CB192380028B3EB /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1522D1CB192380028B3EB /* Threading.swift */; };
+		867DDDAD1C94C45B005576A4 /* GridTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DDDAC1C94C45B005576A4 /* GridTestCase.swift */; };
 		86B01F2B1C9409AF00D1C7A2 /* CanvasViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */; };
-		86EE437A1CA729A000DE56A2 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8655370D1CA7262100060E85 /* Classes.swift */; };
+		86DF563E1CCD650A00E6A7DD /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF562B1CCD650A00E6A7DD /* Agent.swift */; };
+		86DF563F1CCD650A00E6A7DD /* AgentSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF562C1CCD650A00E6A7DD /* AgentSprite.swift */; };
+		86DF56401CCD650A00E6A7DD /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF562D1CCD650A00E6A7DD /* ArrayExtensions.swift */; };
+		86DF56411CCD650A00E6A7DD /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF562E1CCD650A00E6A7DD /* CanvasView.swift */; };
+		86DF56421CCD650A00E6A7DD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF562F1CCD650A00E6A7DD /* Cell.swift */; };
+		86DF56431CCD650A00E6A7DD /* CellGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56301CCD650A00E6A7DD /* CellGrid.swift */; };
+		86DF56441CCD650A00E6A7DD /* CellSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56311CCD650A00E6A7DD /* CellSprite.swift */; };
+		86DF56451CCD650A00E6A7DD /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56321CCD650A00E6A7DD /* CGPointExtensions.swift */; };
+		86DF56461CCD650A00E6A7DD /* GoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56331CCD650A00E6A7DD /* GoPanelView.swift */; };
+		86DF56471CCD650A00E6A7DD /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56341CCD650A00E6A7DD /* Parameters.swift */; };
+		86DF56481CCD650A00E6A7DD /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56351CCD650A00E6A7DD /* Platform.swift */; };
+		86DF56491CCD650A00E6A7DD /* RangeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56361CCD650A00E6A7DD /* RangeExtensions.swift */; };
+		86DF564A1CCD650A00E6A7DD /* SetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56371CCD650A00E6A7DD /* SetExtensions.swift */; };
+		86DF564B1CCD650A00E6A7DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56381CCD650A00E6A7DD /* SettingsView.swift */; };
+		86DF564C1CCD650A00E6A7DD /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF56391CCD650A00E6A7DD /* Threading.swift */; };
+		86DF564D1CCD650A00E6A7DD /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF563A1CCD650A00E6A7DD /* World.swift */; };
+		86DF564E1CCD650A00E6A7DD /* WorldScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF563B1CCD650A00E6A7DD /* WorldScene.swift */; };
+		86DF564F1CCD650A00E6A7DD /* WorldSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF563C1CCD650A00E6A7DD /* WorldSequence.swift */; };
+		86DF56501CCD650A00E6A7DD /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF563D1CCD650A00E6A7DD /* WorldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		865537011CA7260A00060E85 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 865BD41E1C93AE9000D5392B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 865536F51CA7260A00060E85;
-			remoteInfo = SchellingSegregation;
-		};
 		865BD4331C93AE9100D5392B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 865BD41E1C93AE9000D5392B /* Project object */;
@@ -64,69 +49,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		861DA5341CC2D90700EC7455 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		863259451CA791EB0066444D /* CardinalityTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardinalityTestCase.swift; sourceTree = "<group>"; };
-		865536F61CA7260A00060E85 /* SchellingSegregation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SchellingSegregation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		865536F81CA7260A00060E85 /* SchellingSegregation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchellingSegregation.h; sourceTree = "<group>"; };
-		865536FA1CA7260A00060E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		865536FF1CA7260A00060E85 /* SchellingSegregationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchellingSegregationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		865537041CA7260A00060E85 /* SchellingSegregationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchellingSegregationTests.swift; sourceTree = "<group>"; };
-		865537061CA7260A00060E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8655370D1CA7262100060E85 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		865BD4271C93AE9000D5392B /* WorldKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WorldKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		865BD42A1C93AE9000D5392B /* WorldKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorldKit.h; sourceTree = "<group>"; };
-		865BD42C1C93AE9000D5392B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		865BD4311C93AE9100D5392B /* WorldKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		865BD4361C93AE9100D5392B /* WorldKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldKitTests.swift; sourceTree = "<group>"; };
 		865BD4381C93AE9100D5392B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		865BD4421C93AEA600D5392B /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
-		865BD4431C93AEA600D5392B /* AgentSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentSprite.swift; sourceTree = "<group>"; };
-		865BD4441C93AEA600D5392B /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
-		865BD4451C93AEA600D5392B /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		865BD4461C93AEA600D5392B /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		865BD4471C93AEA600D5392B /* CellGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGrid.swift; sourceTree = "<group>"; };
-		865BD4481C93AEA600D5392B /* CellSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSprite.swift; sourceTree = "<group>"; };
-		865BD4491C93AEA600D5392B /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensions.swift; sourceTree = "<group>"; };
-		865BD44A1C93AEA600D5392B /* GoPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoPanelView.swift; sourceTree = "<group>"; };
-		865BD44C1C93AEA600D5392B /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = Classes/Parameters.swift; sourceTree = "<group>"; };
-		865BD44D1C93AEA600D5392B /* SetExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetExtensions.swift; sourceTree = "<group>"; };
-		865BD44E1C93AEA600D5392B /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		865BD44F1C93AEA600D5392B /* Spatial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spatial.swift; sourceTree = "<group>"; };
-		865BD4501C93AEA600D5392B /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		865BD4511C93AEA600D5392B /* WorldScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene.swift; sourceTree = "<group>"; };
-		865BD4521C93AEA600D5392B /* WorldSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldSequence.swift; sourceTree = "<group>"; };
-		865BD4531C93AEA600D5392B /* WorldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
 		865BD4661C93AEB200D5392B /* CellGridTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGridTestCase.swift; sourceTree = "<group>"; };
 		865BD4691C93AEB200D5392B /* WorldSceneTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldSceneTestCase.swift; sourceTree = "<group>"; };
 		865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldSequenceTestCase.swift; sourceTree = "<group>"; };
 		865BD46B1C93AEB200D5392B /* WorldTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTestCase.swift; sourceTree = "<group>"; };
 		865BD46C1C93AEB200D5392B /* WorldViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewTestCase.swift; sourceTree = "<group>"; };
-		865BD4751C93AF2400D5392B /* Sheep.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Sheep.playground; sourceTree = "<group>"; };
-		865BD47C1C93B1AB00D5392B /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
-		867DDDA91C94C31E005576A4 /* RangeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeExtensions.swift; sourceTree = "<group>"; };
-		867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTestCase.swift; sourceTree = "<group>"; };
-		86A1522D1CB192380028B3EB /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
-		86A5F3E41CAA4709005A97EF /* MatrixPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MatrixPlayground.playground; sourceTree = "<group>"; };
-		86AF955F1C97E084000BE890 /* SchellingSegregation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SchellingSegregation.playground; path = ../WorldKit/SchellingSegregation.playground; sourceTree = "<group>"; };
+		867DDDAC1C94C45B005576A4 /* GridTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTestCase.swift; sourceTree = "<group>"; };
 		86B01F2A1C9409AF00D1C7A2 /* CanvasViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasViewTestCase.swift; sourceTree = "<group>"; };
+		86DF562B1CCD650A00E6A7DD /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Agent.swift; path = WorldKit/Sources/Agent.swift; sourceTree = "<group>"; };
+		86DF562C1CCD650A00E6A7DD /* AgentSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AgentSprite.swift; path = WorldKit/Sources/AgentSprite.swift; sourceTree = "<group>"; };
+		86DF562D1CCD650A00E6A7DD /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = WorldKit/Sources/ArrayExtensions.swift; sourceTree = "<group>"; };
+		86DF562E1CCD650A00E6A7DD /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CanvasView.swift; path = WorldKit/Sources/CanvasView.swift; sourceTree = "<group>"; };
+		86DF562F1CCD650A00E6A7DD /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = WorldKit/Sources/Cell.swift; sourceTree = "<group>"; };
+		86DF56301CCD650A00E6A7DD /* CellGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CellGrid.swift; path = WorldKit/Sources/CellGrid.swift; sourceTree = "<group>"; };
+		86DF56311CCD650A00E6A7DD /* CellSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CellSprite.swift; path = WorldKit/Sources/CellSprite.swift; sourceTree = "<group>"; };
+		86DF56321CCD650A00E6A7DD /* CGPointExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = WorldKit/Sources/CGPointExtensions.swift; sourceTree = "<group>"; };
+		86DF56331CCD650A00E6A7DD /* GoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoPanelView.swift; path = WorldKit/Sources/GoPanelView.swift; sourceTree = "<group>"; };
+		86DF56341CCD650A00E6A7DD /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = WorldKit/Sources/Parameters.swift; sourceTree = "<group>"; };
+		86DF56351CCD650A00E6A7DD /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = WorldKit/Sources/Platform.swift; sourceTree = "<group>"; };
+		86DF56361CCD650A00E6A7DD /* RangeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RangeExtensions.swift; path = WorldKit/Sources/RangeExtensions.swift; sourceTree = "<group>"; };
+		86DF56371CCD650A00E6A7DD /* SetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SetExtensions.swift; path = WorldKit/Sources/SetExtensions.swift; sourceTree = "<group>"; };
+		86DF56381CCD650A00E6A7DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = WorldKit/Sources/SettingsView.swift; sourceTree = "<group>"; };
+		86DF56391CCD650A00E6A7DD /* Threading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Threading.swift; path = WorldKit/Sources/Threading.swift; sourceTree = "<group>"; };
+		86DF563A1CCD650A00E6A7DD /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = World.swift; path = WorldKit/Sources/World.swift; sourceTree = "<group>"; };
+		86DF563B1CCD650A00E6A7DD /* WorldScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WorldScene.swift; path = WorldKit/Sources/WorldScene.swift; sourceTree = "<group>"; };
+		86DF563C1CCD650A00E6A7DD /* WorldSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WorldSequence.swift; path = WorldKit/Sources/WorldSequence.swift; sourceTree = "<group>"; };
+		86DF563D1CCD650A00E6A7DD /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WorldView.swift; path = WorldKit/Sources/WorldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		865536F21CA7260A00060E85 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		865536FC1CA7260A00060E85 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				865537001CA7260A00060E85 /* SchellingSegregation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		865BD4231C93AE9000D5392B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,33 +101,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		865536F71CA7260A00060E85 /* SchellingSegregation */ = {
-			isa = PBXGroup;
-			children = (
-				8655370D1CA7262100060E85 /* Classes.swift */,
-				86AF955F1C97E084000BE890 /* SchellingSegregation.playground */,
-				865536F81CA7260A00060E85 /* SchellingSegregation.h */,
-				865536FA1CA7260A00060E85 /* Info.plist */,
-			);
-			path = SchellingSegregation;
-			sourceTree = "<group>";
-		};
-		865537031CA7260A00060E85 /* SchellingSegregationTests */ = {
-			isa = PBXGroup;
-			children = (
-				865537041CA7260A00060E85 /* SchellingSegregationTests.swift */,
-				865537061CA7260A00060E85 /* Info.plist */,
-			);
-			path = SchellingSegregationTests;
-			sourceTree = "<group>";
-		};
 		865BD41D1C93AE9000D5392B = {
 			isa = PBXGroup;
 			children = (
-				865BD4291C93AE9000D5392B /* WorldKit */,
+				86DF56511CCD654D00E6A7DD /* Agents */,
+				86DF56551CCD657F00E6A7DD /* SpriteKit */,
+				86DF56531CCD656600E6A7DD /* Extensions */,
+				86DF56561CCD658E00E6A7DD /* Views */,
+				86DF56341CCD650A00E6A7DD /* Parameters.swift */,
+				86DF56351CCD650A00E6A7DD /* Platform.swift */,
+				86DF56541CCD656E00E6A7DD /* Utilities */,
+				86DF56521CCD655700E6A7DD /* World */,
 				865BD4351C93AE9100D5392B /* WorldKitTests */,
-				865536F71CA7260A00060E85 /* SchellingSegregation */,
-				865537031CA7260A00060E85 /* SchellingSegregationTests */,
 				865BD4281C93AE9000D5392B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,23 +122,8 @@
 			children = (
 				865BD4271C93AE9000D5392B /* WorldKit.framework */,
 				865BD4311C93AE9100D5392B /* WorldKitTests.xctest */,
-				865536F61CA7260A00060E85 /* SchellingSegregation.framework */,
-				865536FF1CA7260A00060E85 /* SchellingSegregationTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		865BD4291C93AE9000D5392B /* WorldKit */ = {
-			isa = PBXGroup;
-			children = (
-				865BD4411C93AEA600D5392B /* Classes */,
-				865BD44C1C93AEA600D5392B /* Parameters.swift */,
-				865BD4751C93AF2400D5392B /* Sheep.playground */,
-				865BD42A1C93AE9000D5392B /* WorldKit.h */,
-				865BD42C1C93AE9000D5392B /* Info.plist */,
-				861DA5341CC2D90700EC7455 /* Platform.swift */,
-			);
-			path = WorldKit;
 			sourceTree = "<group>";
 		};
 		865BD4351C93AE9100D5392B /* WorldKitTests */ = {
@@ -205,7 +131,7 @@
 			children = (
 				865BD4361C93AE9100D5392B /* WorldKitTests.swift */,
 				865BD4661C93AEB200D5392B /* CellGridTestCase.swift */,
-				867DDDAC1C94C45B005576A4 /* MatrixTestCase.swift */,
+				867DDDAC1C94C45B005576A4 /* GridTestCase.swift */,
 				863259451CA791EB0066444D /* CardinalityTestCase.swift */,
 				865BD4691C93AEB200D5392B /* WorldSceneTestCase.swift */,
 				865BD46A1C93AEB200D5392B /* WorldSequenceTestCase.swift */,
@@ -217,147 +143,78 @@
 			path = WorldKitTests;
 			sourceTree = "<group>";
 		};
-		865BD4411C93AEA600D5392B /* Classes */ = {
+		86DF56511CCD654D00E6A7DD /* Agents */ = {
 			isa = PBXGroup;
 			children = (
-				865BD4761C93B0EA00D5392B /* Agents */,
-				865BD4791C93B12600D5392B /* World */,
-				865BD4771C93B0F600D5392B /* Units */,
-				865BD47B1C93B15000D5392B /* Extensions */,
-				86A1522C1CB1922D0028B3EB /* Utilities */,
-				865BD4781C93B0FC00D5392B /* Views */,
-				865BD47A1C93B13100D5392B /* SpriteKit */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		865BD4761C93B0EA00D5392B /* Agents */ = {
-			isa = PBXGroup;
-			children = (
-				865BD4421C93AEA600D5392B /* Agent.swift */,
-				865BD4461C93AEA600D5392B /* Cell.swift */,
-				865BD4471C93AEA600D5392B /* CellGrid.swift */,
+				86DF562B1CCD650A00E6A7DD /* Agent.swift */,
+				86DF562F1CCD650A00E6A7DD /* Cell.swift */,
+				86DF56301CCD650A00E6A7DD /* CellGrid.swift */,
 			);
 			name = Agents;
 			sourceTree = "<group>";
 		};
-		865BD4771C93B0F600D5392B /* Units */ = {
+		86DF56521CCD655700E6A7DD /* World */ = {
 			isa = PBXGroup;
 			children = (
-				865BD44F1C93AEA600D5392B /* Spatial.swift */,
-				865BD47C1C93B1AB00D5392B /* Matrix.swift */,
-				86A5F3E41CAA4709005A97EF /* MatrixPlayground.playground */,
-			);
-			name = Units;
-			sourceTree = "<group>";
-		};
-		865BD4781C93B0FC00D5392B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				865BD4451C93AEA600D5392B /* CanvasView.swift */,
-				865BD4531C93AEA600D5392B /* WorldView.swift */,
-				865BD44A1C93AEA600D5392B /* GoPanelView.swift */,
-				865BD44E1C93AEA600D5392B /* SettingsView.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		865BD4791C93B12600D5392B /* World */ = {
-			isa = PBXGroup;
-			children = (
-				865BD4501C93AEA600D5392B /* World.swift */,
-				865BD4521C93AEA600D5392B /* WorldSequence.swift */,
+				86DF563A1CCD650A00E6A7DD /* World.swift */,
+				86DF563C1CCD650A00E6A7DD /* WorldSequence.swift */,
 			);
 			name = World;
 			sourceTree = "<group>";
 		};
-		865BD47A1C93B13100D5392B /* SpriteKit */ = {
+		86DF56531CCD656600E6A7DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				865BD4431C93AEA600D5392B /* AgentSprite.swift */,
-				865BD4511C93AEA600D5392B /* WorldScene.swift */,
-				865BD4481C93AEA600D5392B /* CellSprite.swift */,
-			);
-			name = SpriteKit;
-			sourceTree = "<group>";
-		};
-		865BD47B1C93B15000D5392B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				865BD4491C93AEA600D5392B /* CGPointExtensions.swift */,
-				865BD4441C93AEA600D5392B /* ArrayExtensions.swift */,
-				865BD44D1C93AEA600D5392B /* SetExtensions.swift */,
-				867DDDA91C94C31E005576A4 /* RangeExtensions.swift */,
+				86DF562D1CCD650A00E6A7DD /* ArrayExtensions.swift */,
+				86DF56321CCD650A00E6A7DD /* CGPointExtensions.swift */,
+				86DF56361CCD650A00E6A7DD /* RangeExtensions.swift */,
+				86DF56371CCD650A00E6A7DD /* SetExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		86A1522C1CB1922D0028B3EB /* Utilities */ = {
+		86DF56541CCD656E00E6A7DD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				86A1522D1CB192380028B3EB /* Threading.swift */,
+				86DF56391CCD650A00E6A7DD /* Threading.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		86DF56551CCD657F00E6A7DD /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				86DF562C1CCD650A00E6A7DD /* AgentSprite.swift */,
+				86DF56311CCD650A00E6A7DD /* CellSprite.swift */,
+				86DF563B1CCD650A00E6A7DD /* WorldScene.swift */,
+			);
+			name = SpriteKit;
+			sourceTree = "<group>";
+		};
+		86DF56561CCD658E00E6A7DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86DF562E1CCD650A00E6A7DD /* CanvasView.swift */,
+				86DF56331CCD650A00E6A7DD /* GoPanelView.swift */,
+				86DF56381CCD650A00E6A7DD /* SettingsView.swift */,
+				86DF563D1CCD650A00E6A7DD /* WorldView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		865536F31CA7260A00060E85 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				865536F91CA7260A00060E85 /* SchellingSegregation.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		865BD4241C93AE9000D5392B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				865BD42B1C93AE9000D5392B /* WorldKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		865536F51CA7260A00060E85 /* SchellingSegregation */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8655370B1CA7260A00060E85 /* Build configuration list for PBXNativeTarget "SchellingSegregation" */;
-			buildPhases = (
-				865536F11CA7260A00060E85 /* Sources */,
-				865536F21CA7260A00060E85 /* Frameworks */,
-				865536F31CA7260A00060E85 /* Headers */,
-				865536F41CA7260A00060E85 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SchellingSegregation;
-			productName = SchellingSegregation;
-			productReference = 865536F61CA7260A00060E85 /* SchellingSegregation.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		865536FE1CA7260A00060E85 /* SchellingSegregationTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8655370C1CA7260A00060E85 /* Build configuration list for PBXNativeTarget "SchellingSegregationTests" */;
-			buildPhases = (
-				865536FB1CA7260A00060E85 /* Sources */,
-				865536FC1CA7260A00060E85 /* Frameworks */,
-				865536FD1CA7260A00060E85 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				865537021CA7260A00060E85 /* PBXTargetDependency */,
-			);
-			name = SchellingSegregationTests;
-			productName = SchellingSegregationTests;
-			productReference = 865536FF1CA7260A00060E85 /* SchellingSegregationTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		865BD4261C93AE9000D5392B /* WorldKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 865BD43B1C93AE9100D5392B /* Build configuration list for PBXNativeTarget "WorldKit" */;
@@ -404,12 +261,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Sticks;
 				TargetAttributes = {
-					865536F51CA7260A00060E85 = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					865536FE1CA7260A00060E85 = {
-						CreatedOnToolsVersion = 7.3;
-					};
 					865BD4261C93AE9000D5392B = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -432,27 +283,11 @@
 			targets = (
 				865BD4261C93AE9000D5392B /* WorldKit */,
 				865BD4301C93AE9100D5392B /* WorldKitTests */,
-				865536F51CA7260A00060E85 /* SchellingSegregation */,
-				865536FE1CA7260A00060E85 /* SchellingSegregationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		865536F41CA7260A00060E85 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		865536FD1CA7260A00060E85 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		865BD4251C93AE9000D5392B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,48 +305,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		865536F11CA7260A00060E85 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8655370E1CA7262100060E85 /* Classes.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		865536FB1CA7260A00060E85 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				86EE437A1CA729A000DE56A2 /* Classes.swift in Sources */,
-				865537051CA7260A00060E85 /* SchellingSegregationTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		865BD4221C93AE9000D5392B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				861DA5351CC2D90700EC7455 /* Platform.swift in Sources */,
-				86A1522E1CB192380028B3EB /* Threading.swift in Sources */,
-				865BD4551C93AEA600D5392B /* AgentSprite.swift in Sources */,
-				865BD4631C93AEA600D5392B /* WorldScene.swift in Sources */,
-				865BD4591C93AEA600D5392B /* CellGrid.swift in Sources */,
-				865BD45A1C93AEA600D5392B /* CellSprite.swift in Sources */,
-				865BD4611C93AEA600D5392B /* Spatial.swift in Sources */,
-				865BD4651C93AEA600D5392B /* WorldView.swift in Sources */,
-				865BD4561C93AEA600D5392B /* ArrayExtensions.swift in Sources */,
-				865BD4581C93AEA600D5392B /* Cell.swift in Sources */,
-				865BD4571C93AEA600D5392B /* CanvasView.swift in Sources */,
-				865BD45B1C93AEA600D5392B /* CGPointExtensions.swift in Sources */,
-				865BD4621C93AEA600D5392B /* World.swift in Sources */,
-				865BD4641C93AEA600D5392B /* WorldSequence.swift in Sources */,
-				865BD45C1C93AEA600D5392B /* GoPanelView.swift in Sources */,
-				865BD47D1C93B1AB00D5392B /* Matrix.swift in Sources */,
-				865BD4541C93AEA600D5392B /* Agent.swift in Sources */,
-				865BD45F1C93AEA600D5392B /* SetExtensions.swift in Sources */,
-				865BD45E1C93AEA600D5392B /* Parameters.swift in Sources */,
-				867DDDAA1C94C31E005576A4 /* RangeExtensions.swift in Sources */,
-				865BD4601C93AEA600D5392B /* SettingsView.swift in Sources */,
+				86DF563E1CCD650A00E6A7DD /* Agent.swift in Sources */,
+				86DF563F1CCD650A00E6A7DD /* AgentSprite.swift in Sources */,
+				86DF56401CCD650A00E6A7DD /* ArrayExtensions.swift in Sources */,
+				86DF56411CCD650A00E6A7DD /* CanvasView.swift in Sources */,
+				86DF56421CCD650A00E6A7DD /* Cell.swift in Sources */,
+				86DF56431CCD650A00E6A7DD /* CellGrid.swift in Sources */,
+				86DF56441CCD650A00E6A7DD /* CellSprite.swift in Sources */,
+				86DF56451CCD650A00E6A7DD /* CGPointExtensions.swift in Sources */,
+				86DF56461CCD650A00E6A7DD /* GoPanelView.swift in Sources */,
+				86DF56471CCD650A00E6A7DD /* Parameters.swift in Sources */,
+				86DF56481CCD650A00E6A7DD /* Platform.swift in Sources */,
+				86DF56491CCD650A00E6A7DD /* RangeExtensions.swift in Sources */,
+				86DF564A1CCD650A00E6A7DD /* SetExtensions.swift in Sources */,
+				86DF564B1CCD650A00E6A7DD /* SettingsView.swift in Sources */,
+				86DF564C1CCD650A00E6A7DD /* Threading.swift in Sources */,
+				86DF564D1CCD650A00E6A7DD /* World.swift in Sources */,
+				86DF564E1CCD650A00E6A7DD /* WorldScene.swift in Sources */,
+				86DF564F1CCD650A00E6A7DD /* WorldSequence.swift in Sources */,
+				86DF56501CCD650A00E6A7DD /* WorldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +338,7 @@
 				865BD4371C93AE9100D5392B /* WorldKitTests.swift in Sources */,
 				865BD4731C93AEB200D5392B /* WorldViewTestCase.swift in Sources */,
 				865BD4711C93AEB200D5392B /* WorldSequenceTestCase.swift in Sources */,
-				867DDDAD1C94C45B005576A4 /* MatrixTestCase.swift in Sources */,
+				867DDDAD1C94C45B005576A4 /* GridTestCase.swift in Sources */,
 				865BD46D1C93AEB200D5392B /* CellGridTestCase.swift in Sources */,
 				863259461CA791EB0066444D /* CardinalityTestCase.swift in Sources */,
 				865BD4701C93AEB200D5392B /* WorldSceneTestCase.swift in Sources */,
@@ -534,11 +350,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		865537021CA7260A00060E85 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 865536F51CA7260A00060E85 /* SchellingSegregation */;
-			targetProxy = 865537011CA7260A00060E85 /* PBXContainerItemProxy */;
-		};
 		865BD4341C93AE9100D5392B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 865BD4261C93AE9000D5392B /* WorldKit */;
@@ -547,67 +358,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		865537071CA7260A00060E85 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SchellingSegregation/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sticks.SchellingSegregation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		865537081CA7260A00060E85 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SchellingSegregation/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sticks.SchellingSegregation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		865537091CA7260A00060E85 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = SchellingSegregationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sticks.SchellingSegregationTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		8655370A1CA7260A00060E85 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = SchellingSegregationTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sticks.SchellingSegregationTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		865BD4391C93AE9100D5392B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -759,24 +509,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8655370B1CA7260A00060E85 /* Build configuration list for PBXNativeTarget "SchellingSegregation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				865537071CA7260A00060E85 /* Debug */,
-				865537081CA7260A00060E85 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8655370C1CA7260A00060E85 /* Build configuration list for PBXNativeTarget "SchellingSegregationTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				865537091CA7260A00060E85 /* Debug */,
-				8655370A1CA7260A00060E85 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		865BD4211C93AE9000D5392B /* Build configuration list for PBXProject "WorldKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Range where Element: BidirectionalIndexType {
+public extension Range where Element: BidirectionalIndex {
 //	var count: Element {
 //		return endIndex - startIndex
 //	}
