@@ -11,8 +11,8 @@ import SpriteKit
 import Grid
 
 protocol WorldDelegate: class {
-	func world(world: World, didAddAgent agent: Agent)
-	func world(world: World, didRemoveAgent agent: Agent)
+	func world(_ world: World, didAddAgent agent: Agent)
+	func world(_ world: World, didRemoveAgent agent: Agent)
 }
 
 public class World {
@@ -32,7 +32,7 @@ public class World {
 	}
 	
 	public convenience init<C: Cell>(rows: Int, columns: Int, cellType: C.Type) {
-		self.init(rows: rows, columns: columns) { _ in
+		self.dynamicType.init(rows: rows, columns: columns) { _ in
 			return C.init()
 		}
 	}
@@ -43,24 +43,24 @@ public class World {
 	
 	// MARK: - Positions
 	
-	public func gridPointForPosition(position: CGPoint) -> GridPoint {
+	public func gridPointForPosition(_ position: CGPoint) -> GridPoint {
 		let x = Int(position.x)
 		let y = Int(position.y)
 		return GridPoint(row: x, column: y)
 	}
 	
-	public func positionForGridPoint(index: GridPoint) -> CGPoint {
+	public func positionForGridPoint(_ index: GridPoint) -> CGPoint {
 		return CGPoint(x: index.row, y: index.column)
 	}
 	
 	// MARK: - Adding Agents
 	
-	public func addAgent(agent: Agent) {
+	public func addAgent(_ agent: Agent) {
 		agents.insert(agent)
 		delegate?.world(self, didAddAgent: agent)
 	}
 	
-	public func addAgents<A: Agent>(number: Int, @autoclosure agentInit: () -> A) {
+	public func addAgents<A: Agent>(_ number: Int, @autoclosure agentInit: () -> A) {
 		for _ in 0 ..< number {
 			let agent = agentInit()
 			addAgent(agent)
@@ -68,7 +68,7 @@ public class World {
 		}
 	}
 	
-	public func addAgents<A: Agent>(number: Int, type: A.Type = A.self, configure: (A -> Void)? = nil) {
+	public func addAgents<A: Agent>(_ number: Int, type: A.Type = A.self, configure: ((A) -> Void)? = nil) {
 		let agents = (0..<number).map { _ in A.init() }
 		for agent in agents {
 			configure?(agent)
@@ -78,7 +78,7 @@ public class World {
 	
 	// MARK: - Removing Agents
 	
-	public func removeAgent(agent: Agent) {
+	public func removeAgent(_ agent: Agent) {
 //		print(agents.count)
 		agents.remove(agent)
 //		print(agents.count)
@@ -87,7 +87,7 @@ public class World {
 	
 	// MARK: - Finding Agents
 	
-	public func agentsOfType<A: Agent>(agentType: A.Type, limit: Int? = nil) -> Set<A> {
+	public func agentsOfType<A: Agent>(_ agentType: A.Type, limit: Int? = nil) -> Set<A> {
 		if agentType == Agent.self {
 			return agents as! Set<A>
 		}
@@ -104,7 +104,7 @@ public class World {
 		return Set(filtered.randomized[0..<filtered.count])
 	}
 	
-	public func agentsNearPosition(position: CGPoint, within: Int = 1) -> Set<Agent> {
+	public func agentsNearPosition(_ position: CGPoint, within: Int = 1) -> Set<Agent> {
 		let gridPoint = GridPoint(row: Int(position.x), column: Int(position.y))
 		let filtered = cells[nearPoint: gridPoint, within: within]
 		var agents: [Agent] = []
@@ -129,22 +129,22 @@ public class World {
 	
 	// MARK: - Finding Cells
 	
-	public func cellsNearPoint(point: CGPoint, radius: CGFloat, limit: Int? = nil) -> Set<Cell> {
+	public func cellsNearPoint(_ point: CGPoint, radius: CGFloat, limit: Int? = nil) -> Set<Cell> {
 		let filtered = cells.filter { return $0.position.distanceToPoint(point) < radius }
 		let flattened = filtered.flatMap { $0 }
 		return Set(flattened)
 	}
 	
-	public func cellsNearAgent(agent: Agent, radius: CGFloat) -> Set<Cell> {
+	public func cellsNearAgent(_ agent: Agent, radius: CGFloat) -> Set<Cell> {
 		return cellsNearPoint(agent.position, radius: radius)
 	}
 	
-	public func cellsNearPoint(point: GridPoint, within: Int = 1) -> Set<Cell> {
+	public func cellsNearPoint(_ point: GridPoint, within: Int = 1) -> Set<Cell> {
 		let filtered = cells[nearPoint: point, within: within]
 		return Set(filtered.elements)
 	}
 	
-	public func cellsNearAgent(agent: Agent, within: Int = 1) -> Set<Cell> {
+	public func cellsNearAgent(_ agent: Agent, within: Int = 1) -> Set<Cell> {
 		let point = gridPointForPosition(agent.position)
 		return cellsNearPoint(point, within: within)
 	}

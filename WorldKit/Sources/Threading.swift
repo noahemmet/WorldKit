@@ -10,10 +10,10 @@ import Foundation
 
 public typealias Closure = () -> Void
 
-public func async(background: Closure, _ main: Closure?) {
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+public func async(_ background: Closure, _ main: Closure?) {
+	DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async {
 		background()
-		dispatch_async(dispatch_get_main_queue()) {
+		DispatchQueue.main.async {
 			main?()
 		}
 	}

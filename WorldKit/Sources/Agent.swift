@@ -23,23 +23,23 @@ public class Agent: PositionTrait {
 		uuidCounter += 1
 	}
 	
-	public func update(world: World) {
+	public func update(_ world: World) {
 		
 	}
 }
 
 extension Agent {
-	public func move(direction: RelativeDirection, distance: CGFloat = 1) {
+	public func move(_ direction: RelativeDirection, distance: CGFloat = 1) {
 		let x = position.x + distance * sin(heading + direction.degrees.radians)
 		let y = position.y + distance * cos(heading + direction.degrees.radians)
 		position = CGPoint(x: x, y: y)
 	}
 	
-	public func moveTowardsAgent(agent: Agent, distance: CGFloat = 1, adjustHeading: Bool = true) {
+	public func moveTowardsAgent(_ agent: Agent, distance: CGFloat = 1, adjustHeading: Bool = true) {
 		moveTowardsPoint(agent.position, distance: distance, adjustHeading: adjustHeading)
 	}
 	
-	public func moveTowardsPoint(point: CGPoint, distance: CGFloat = 1, adjustHeading: Bool = true) {
+	public func moveTowardsPoint(_ point: CGPoint, distance: CGFloat = 1, adjustHeading: Bool = true) {
 		let vector = CGPoint(x: point.x - self.position.x, y: point.y - self.position.y)
 		let unitVector = CGPoint(x: vector.x / distance, y: vector.y / distance)
 		self.position = CGPoint(x: self.position.x + unitVector.x * distance, y: self.position.y + unitVector.y * distance)
@@ -76,8 +76,8 @@ extension Agent: CustomPlaygroundQuickLookable {
 	public func customPlaygroundQuickLook() -> PlaygroundQuickLook {
 		let view = View(frame: Rect(origin: CGPoint.zero, size: CGSize(width: 20, height: 20)))
 		view.wantsLayer = true
-		view.layer?.backgroundColor = color.CGColor
-		return PlaygroundQuickLook.View(view)
+		view.layer?.backgroundColor = color.cgColor
+		return PlaygroundQuickLook.view(view)
 //		let sprite = AgentSprite(agent: self, size: CGSize(width: 20, height: 20))
 //		sprite.color = color
 //		print(sprite)

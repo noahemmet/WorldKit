@@ -9,7 +9,7 @@
 import Foundation
 
 public extension CGPoint {
-	func distanceToPoint(point: CGPoint) -> CGFloat {
+	func distanceToPoint(_ point: CGPoint) -> CGFloat {
 		let dx = point.x - x
 		let dy = point.y - y
 		let distance = sqrt(dx*dx + dy*dy)
